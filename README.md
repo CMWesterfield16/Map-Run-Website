@@ -1,1 +1,21 @@
 # Map-Run-Website
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Scenic Route Finder</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+
+    </script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src='main.js'></script>
+</body>
+
+</html>
