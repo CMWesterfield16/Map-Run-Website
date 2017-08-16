@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand');
+
+#nav {
+    display: flex;
+    justify-content: center;
+}
+
+.navlink {
+    color: black;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 1.5em;
+    font-family: 'Just Another Hand', cursive;
+    border-style: none;
+    outline: none;
+}
+
+.navlink:hover {
+    color: #097D11;
+}
+
+.navactive {
+    color: #6D2A65;
+}
+
+.maindiv {
+    display: none;
+}
+
+.mainactive {
+    display: inherit;    
+}
+
