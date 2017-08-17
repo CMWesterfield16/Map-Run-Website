@@ -6,7 +6,7 @@ var map, infoWindow;
 
 var marker = null;
 
-var totalDistance = 0.00;
+var totalDistance = (0).toFixed(3);
 var dataDiv = document.getElementById('data-stream');
 dataDiv.innerHTML = "Run Distance: " + totalDistance + " mi.";
 function setDistance() {
@@ -142,10 +142,17 @@ function initMap() {
     if (waypointLatLng.length >= 1) {
       waypointLatLng.splice(waypointLatLng.length - 1, 1);
       startDrawingMap();
+
+      if(waypointLatLng.length == 1){
+        totalDistance = 0;
+        setDistance();
+      }
     }
   });
 
   document.getElementById('btn-clear').addEventListener('click', function(){
+    totalDistance = 0;
+    setDistance();
     waypointLatLng = [];
     startDrawingMap();
   });
