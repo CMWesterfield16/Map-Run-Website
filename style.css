@@ -19,7 +19,7 @@
 }
 
 
-/*Add border to elements*/
+/*Add border to elements and set size of Image Holder*/
 
 #image-holder {
   border: 2px solid black;
@@ -125,11 +125,10 @@
 
 
 /*Switch between google map and google street view*/
-.google-active {
+/*.google-active {
   display: inherit;
 
-}
+}*/
 .google-not-active {
   display: none;
 }
-

@@ -18,12 +18,12 @@ mainContent.append(imageHolder);
 
 var map = document.createElement('div');
 map.id = 'map';
-map.className = 'google-active';
+map.className = 'google-not-active';
 imageHolder.append(map);
 
 var streetView = document.createElement('div');
 streetView.id = 'streetView';
-streetView.className = 'google-not-active';
+streetView.className = 'google-active';
 imageHolder.append(streetView);
 
 var sideBar = document.createElement('div');
