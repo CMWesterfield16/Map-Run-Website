@@ -8,15 +8,12 @@ var totalDistance = 0.00;
 var dataDiv = document.getElementById('data-stream');
 dataDiv.innerHTML = "Run Distance: " + totalDistance + " mi.";
 
-console.log("outside");
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 33.980355, lng: -118.422411},
     zoom: 15
   });
   infoWindow = new google.maps.InfoWindow;
-
-  console.log("inside");
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -37,7 +34,6 @@ function initMap() {
   console.log("got current location");
 
   map.addListener('click', function(event) {
-    console.log("hi");
     placeMarker(event.latLng);
   });
 
