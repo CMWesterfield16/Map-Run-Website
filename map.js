@@ -18,6 +18,11 @@ function setDistance() {
 //Array of clicked points
 var waypointLatLng = [];
 
+function initMain() {
+  initMap();
+  initialize();
+}
+
 //Initializes function which is called in HTML file
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
