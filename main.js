@@ -18,6 +18,7 @@ mainContent.append(imageHolder);
 
 var map = document.createElement('div');
 map.id = 'map';
+
 map.className = 'google-not-active';
 imageHolder.append(map);
 
@@ -81,6 +82,11 @@ sideBar.append(buttonDiv);
 
 
 // STREET VIEW PLAYER
+
+var streetDiv = document.createElement('div');
+streetDiv.id = 'street';
+streetDiv.className = 'noShow'
+imageHolder.append(streetDiv);
 
 var running = false;
 var playButton = document.createElement('button');

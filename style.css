@@ -18,9 +18,13 @@
   justify-content: center;
 }
 
+
 /*Add border to elements*/
+
 #image-holder {
   border: 2px solid black;
+  width: 700px;
+  height: 500px;
 }
 
 #side-bar {
@@ -109,6 +113,7 @@
   border: 2px solid black;
 }
 
+
 /*Switch between google map and google street view*/
 .google-active {
   display: inherit;
@@ -117,3 +122,4 @@
 .google-not-active {
   display: none;
 }
+

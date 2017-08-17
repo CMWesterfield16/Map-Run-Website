@@ -170,3 +170,21 @@ function initMap() {
     }
   });
 }
+
+
+
+
+
+
+/******************   STREET VIEW **********************/
+
+var panorama;
+function initialize() {
+  panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('street'),
+      {
+        position: waypointLatLng[0],
+        pov: {heading: 165, pitch: 0},
+        zoom: 1
+      });
+}
