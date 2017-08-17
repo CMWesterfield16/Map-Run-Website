@@ -18,7 +18,7 @@ mainContent.append(imageHolder);
 
 var map = document.createElement('div');
 map.id = 'map';
-map.className = 'google-not-active';
+map.className = 'google-active';
 imageHolder.append(map);
 
 var streetView = document.createElement('div');
