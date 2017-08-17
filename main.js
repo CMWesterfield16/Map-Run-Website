@@ -40,6 +40,7 @@ sideBar.append(dataDiv);
 
 // SIDEBAR NAVIGATION CONTROLS
 var buttonDiv = document.createElement('div');
+var btnBacktrack = document.createElement('BUTTON');
 var btnReturn = document.createElement('BUTTON');
 var btnBacktrack = document.createElement('BUTTON');
 var btnUndo = document.createElement('BUTTON');
@@ -55,6 +56,7 @@ btnReturn.className = 'side-btns';
 btnUndo.className = 'side-btns';
 btnClear.className = 'side-btns';
 
+btnBacktrack.innerText = 'BACK';
 btnReturn.innerText = 'RETURN';
 btnBacktrack.innerText = 'BACK';
 btnUndo.innerText = 'UNDO';
