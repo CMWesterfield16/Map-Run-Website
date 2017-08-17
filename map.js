@@ -3,9 +3,15 @@
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
 var map, infoWindow;
+
+var totalDistance = 0.00;
+var dataDiv = document.getElementById('data-stream');
+dataDiv.innerHTML = "Run Distance: " + totalDistance + " mi.";
+
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: 33.980355, long: -118.422411},
     zoom: 15
   });
   infoWindow = new google.maps.InfoWindow;
@@ -37,4 +43,18 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
+}
+
+map.addEventListener('click', function(event) {
+  console.log("Lat: " + event.latLng.lat());
+  console.log("Lng: " + event.latLng.lng());
+  placeMarker(event.latLng, map);
+});
+
+function placeMarker(location, map) {
+  var marker = new google.maps.Marker({
+      position: position,
+      map: map
+  });
+  map.panTo(position);
 }

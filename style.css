@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Just+Another+Hand');
 
+*:focus {
+  outline:0;
+}
+
 #title {
   color: purple;
   margin: 10px;
@@ -14,9 +18,23 @@
   justify-content: center;
 }
 
+#map {
+  border: 2px solid black;
+}
+
 #side-bar {
+  margin: 5px;
   padding: 10px;
   border: 2px solid black;
+}
+
+#data-stream {
+  padding: 5px;
+  font-size: 1.2em;
+  text-align: center;
+  margin: 5px;
+  font-family: 'Just Another Hand';
+  border: 1px solid purple;
 }
 
 .side-btns {
@@ -28,15 +46,11 @@
   display: block;
 }
 .side-btns:hover {
-  background-color: blue;
   color: white;
 }
 
 #title-sideBar {
   background: none;
-}
-#title-sideBar:focus {
-  outline:0;
 }
 
 .title-elements {
@@ -48,4 +62,14 @@
   background: none;
   width: 100px;
   display: block;
+}
+
+.stopped {
+  background-color: #2B712B;
+  color: white;
+}
+
+.running {
+  background-color: #921616;
+  color: white;
 }
