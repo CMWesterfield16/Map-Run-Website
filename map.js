@@ -183,7 +183,7 @@ function initialize() {
   panorama = new google.maps.StreetViewPanorama(
       document.getElementById('street'),
       {
-        position: waypointLatLng[0],
+        position: {lat: 33.980355, lng: -118.422411},
         pov: {heading: 165, pitch: 0},
         zoom: 1
       });

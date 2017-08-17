@@ -18,12 +18,12 @@ mainContent.append(imageHolder);
 
 var map = document.createElement('div');
 map.id = 'map';
-map.className = 'google-active';
+map.className = 'google-not-active';
 imageHolder.append(map);
 
 var streetView = document.createElement('div');
 streetView.id = 'streetView';
-streetView.className = 'google-not-active';
+streetView.className = 'google-active';
 imageHolder.append(streetView);
 
 var sideBar = document.createElement('div');
@@ -81,11 +81,6 @@ sideBar.append(buttonDiv);
 
 
 // STREET VIEW PLAYER
-
-var streetDiv = document.createElement('div');
-streetDiv.id = 'street';
-streetDiv.className = 'noShow'
-imageHolder.append(streetDiv);
 
 var running = false;
 var playButton = document.createElement('button');

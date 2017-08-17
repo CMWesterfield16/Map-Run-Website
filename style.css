@@ -19,10 +19,20 @@
 }
 
 
-/*Add border to elements*/
+/*Add border to elements and set size of Image Holder*/
 
 #image-holder {
   border: 2px solid black;
+  width: 700px;
+  height: 500px;
+}
+
+#map {
+  width: 700px;
+  height: 500px;
+}
+
+#streetView {
   width: 700px;
   height: 500px;
 }
@@ -115,11 +125,10 @@
 
 
 /*Switch between google map and google street view*/
-.google-active {
+/*.google-active {
   display: inherit;
 
-}
+}*/
 .google-not-active {
   display: none;
 }
-
