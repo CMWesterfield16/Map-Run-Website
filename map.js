@@ -8,11 +8,27 @@ var marker = null;
 
 //Counts Distance
 var totalDistance = (0).toFixed(3);
-var dataDiv = document.getElementById('data-stream');
-dataDiv.innerHTML = "Run Distance: " + totalDistance + " mi.";
+var givenSpeed = 10;
+var totalDuration = "00:00:00";
+
+var dataDistance = document.getElementById('data-distance');
+dataDistance.innerHTML = "Run Distance: " + totalDistance + " mi.";
+var speedText = document.getElementById('speed-text');
+speedText.innerHTML = "Run Speed MPH: "
+var speedInput = document.getElementById('speed-input');
+speedInput.value = 10;
+var dataDuration = document.getElementById('data-duration');
+dataDuration.innerHTML = "Run Duration: " + totalDuration;
+
 function setDistance() {
   var mileDistance = (totalDistance * 0.000621371).toFixed(3);
-  dataDiv.innerHTML = "Run Distance: " + mileDistance + " mi.";
+  dataDistance.innerHTML = "Run Distance: " + mileDistance + " mi.";
+
+  console.log(givenSpeed);
+  let date = new Date(null);
+  date.setSeconds(mileDistance / (givenSpeed/3600));
+  var calculatedDuration = date.toISOString().substr(11, 8);
+  dataDuration.innerHTML = "Run Duration: " + calculatedDuration;
 }
 
 //Array of clicked points
@@ -201,6 +217,11 @@ function initMap() {
     }
     //Right now, backtrack only changes the total distance but does not change
     //the array of location markers or the direction list
+  });
+
+  document.getElementById('speed-btn').addEventListener('click', function() {
+    givenSpeed = parseInt(document.getElementById('speed-input').value);
+    setDistance();
   });
 }
 

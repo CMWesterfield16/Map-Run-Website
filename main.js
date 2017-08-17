@@ -47,6 +47,30 @@ dataDiv.id = 'data-stream';
 dataDiv.className = 'data-sidebar';
 sideBar.append(dataDiv);
 
+var distanceData = document.createElement('div');
+var speedData = document.createElement('div');
+var durationData = document.createElement('div');
+
+distanceData.id = 'data-distance';
+speedData.id = 'data-speed';
+durationData.id = 'data-duration';
+
+dataDiv.append(distanceData);
+dataDiv.append(speedData);
+dataDiv.append(durationData);
+
+var speedText = document.createElement('div');
+speedText.id = 'speed-text';
+var speedInput = document.createElement("INPUT");
+speedInput.id = 'speed-input';
+speedInput.setAttribute("type", "text");
+var speedBtn = document.createElement("BUTTON");
+speedBtn.id = 'speed-btn';
+speedBtn.innerHTML = "GO";
+
+speedData.append(speedText);
+speedData.append(speedInput);
+speedData.append(speedBtn);
 
 // SIDEBAR NAVIGATION CONTROLS
 var buttonDiv = document.createElement('div');
