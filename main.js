@@ -94,6 +94,7 @@ playButton.addEventListener("click", function(){
         playButton.innerText = 'RUN';
         map = document.getElementById('map');
         map.className = 'google-active';
+        streetView = document.getElementById('streetView');
         streetView.className = 'google-not-active';
     } else {
         running = true;
@@ -101,6 +102,7 @@ playButton.addEventListener("click", function(){
         playButton.innerText = 'STOP';
         map = document.getElementById('map');
         map.className = 'google-not-active';
+        streetView = document.getElementById('streetView');
         streetView.className = 'google-active';
     }
 });
