@@ -15,7 +15,6 @@ function setDistance() {
 }
 
 var waypointLatLng = [];
-var there =[];
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -130,3 +129,22 @@ btnBacktrack.addEventListener("click", function(){
         btnBacktrack.className = 'side-btns noreturn';
     }
 });
+  
+document.getElementById('btn-return').addEventListener('click', function() {
+  if (waypointLatLng.length >= 2) {
+    waypointLatLng.push(waypointLatLng[0]);
+    writeDirections(waypointLatLng);
+  }
+});
+
+document.getElementById('btn-undo').addEventListener('click', function(){
+  if (waypointLatLng.length >= 1) {
+    waypointLatLng.splice(waypointLatLng.length - 1, 1);
+    writeDirections(waypointLatLng);
+  }
+});
+
+document.getElementById('btn-clear').getEventListener('click', function(){
+  waypointLatLng = [];
+  writenDirections(waypointLatLng);
+ });

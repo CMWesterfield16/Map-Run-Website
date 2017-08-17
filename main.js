@@ -48,7 +48,7 @@ var btnClear = document.createElement('BUTTON');
 
 btnBacktrack.id = 'btn-backtrack';
 btnReturn.id = 'btn-return';
-btnUndo.id = 'btn-id';
+btnUndo.id = 'btn-undo';
 btnClear.id = 'btn-clear';
 
 btnBacktrack.className = 'side-btns noreturn';
