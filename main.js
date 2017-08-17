@@ -41,35 +41,29 @@ sideBar.append(dataDiv);
 // SIDEBAR NAVIGATION CONTROLS
 var buttonDiv = document.createElement('div');
 var btnReturn = document.createElement('BUTTON');
+var btnBacktrack = document.createElement('BUTTON');
 var btnUndo = document.createElement('BUTTON');
 var btnClear = document.createElement('BUTTON');
 
+btnBacktrack.id = 'btn-backtrack';
 btnReturn.id = 'btn-return';
 btnUndo.id = 'btn-id';
 btnClear.id = 'btn-clear';
 
-btnReturn.className = 'side-btns noreturn';
+btnBacktrack.className = 'side-btns noreturn';
+btnReturn.className = 'side-btns';
 btnUndo.className = 'side-btns';
 btnClear.className = 'side-btns';
 
 btnReturn.innerText = 'RETURN';
+btnBacktrack.innerText = 'BACK';
 btnUndo.innerText = 'UNDO';
 btnClear.innerText = 'CLEAR';
 
 buttonDiv.append(btnClear);
 buttonDiv.append(btnUndo);
 buttonDiv.append(btnReturn);
-
-var goHome = false;
-btnReturn.addEventListener("click", function(){
-    if (goHome){
-        goHome = false;
-        btnReturn.className = 'side-btns return';
-    } else {
-        goHome = true;
-        btnReturn.className = 'side-btns noreturn';
-    }
-});
+buttonDiv.append(btnBacktrack);
 
 sideBar.append(buttonDiv);
 
@@ -95,3 +89,19 @@ playButton.addEventListener("click", function(){
 
 
 sideBar.append(playButton);
+
+// Directions List
+
+var directionContent = document.createElement('div');
+directionContent.id = 'direction-content';
+directionContent.className = 'nodirections';
+container.append(directionContent);
+
+var directionTitle = document.createElement('div');
+directionTitle.id = 'directionTitle';
+directionTitle.innerHTML = 'Directions';
+directionContent.append(directionTitle);
+
+var directionList = document.createElement('div');
+directionList.id = 'direction-list';
+directionContent.append(directionList);

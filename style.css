@@ -82,3 +82,21 @@
 .noreturn{
   background-color: gray;
 }
+
+#directionTitle {
+  padding: 5px;
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Just Another Hand';
+}
+
+.nodirections{
+  display: none;
+}
+
+.yesdirections{
+  display: inherit;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid black;
+}

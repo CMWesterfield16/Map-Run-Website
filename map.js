@@ -15,7 +15,6 @@ function setDistance() {
 }
 
 var waypointLatLng = [];
-var thereAndBackLatLng = waypointLatLng;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -71,32 +70,53 @@ function writeDirections(arr) {
   var directionsService = new google.maps.DirectionsService;
   var directionsDisplay = new google.maps.DirectionsRenderer;
   directionsDisplay.setMap(map);
-  for (var i = 0; i < arr.length -1; i++) {
-    calculateAndDisplayRoute(directionsService,
-      directionsDisplay,
-      waypointLatLng[i],
-      waypointLatLng[i + 1]);
-  }
+  directionsDisplay.setDirections({routes: []});
+  calculateAndDisplayRoute(directionsService, directionsDisplay, arr);
 }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, start, finish) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay, arr) {
+  var waypts = [];
+  for (var j = 1; j < (arr.length - 1); j++) {
+    waypts.push({
+      location: arr[j],
+      stopover: false
+    });
+  }
+  console.log(waypts);
+
   directionsService.route({
-    origin: start,
-    destination: finish,
+    origin: arr[0],
+    destination: arr[arr.length - 1],
+    waypoints: waypts,
+    optimizeWaypoints: false,
     travelMode: 'WALKING'
   }, function(response, status) {
     if (status === 'OK') {
+      //Updates Distance
       var legs = response.routes[0].legs;
       for(var i=0; i<legs.length; ++i) {
-        totalDistance += legs[i].distance.value;
-      }
-      if (fdsfadjgoiad) {
-
+        totalDistance = legs[i].distance.value;
       }
       setDistance();
+
+      //Updates Map Drawn directions
+      //directionsDisplay.setDirections(null);
       directionsDisplay.setDirections(response);
+
+      //Updates Written Directions
+      document.getElementById('direction-list').innerHTML = '';
+      directionsDisplay.setPanel(document.getElementById('direction-list'));
+      document.getElementById('direction-content').className = 'yesdirections';
+
     } else {
       window.alert('Directions request failed due to ' + status);
     }
   });
 }
+
+document.getElementById('btn-return').addEventListener('click', function() {
+  if (waypointLatLng.length >= 2) {
+    waypointLatLng.push(waypointLatLng[0]);
+    writeDirections(waypointLatLng);
+  }
+});
