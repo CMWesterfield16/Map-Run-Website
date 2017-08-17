@@ -98,6 +98,7 @@ playButton.addEventListener("click", function(){
         running = true;
         playButton.className = 'side-btns running';
         playButton.innerText = 'STOP';
+        map = document.getElementById('map');
         map.className = 'google-not-active';
         streetView.className = 'google-active';
     }

@@ -181,7 +181,7 @@ function initMap() {
 var panorama;
 function initialize() {
   panorama = new google.maps.StreetViewPanorama(
-      document.getElementById('street'),
+      document.getElementById('streetView'),
       {
         position: {lat: 33.980355, lng: -118.422411},
         pov: {heading: 165, pitch: 0},
