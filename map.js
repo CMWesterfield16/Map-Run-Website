@@ -43,14 +43,29 @@ function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
 
   map.addListener('click', function(event) {
-    waypointLatLng.push(event.latLng);
+    var latLng = event.latLng;
+    waypointLatLng.push(latLng);
+    startDrawingMap();
+  });
+
+  function startDrawingMap() {
     if (waypointLatLng.length >= 2) {
       marker.setMap(null);
       writeDirections(waypointLatLng);
+    } else if (waypointLatLng.length == 1) {
+      if (marker !== null) {
+        marker.setMap(null);
+      }
+      directionsDisplay.setMap(null);
+      placeMarker(waypointLatLng[0]);
     } else {
-      placeMarker(event.latLng);
+      if (marker !== null) {
+        marker.setMap(null);
+      }
+      directionsDisplay.setMap(null);
     }
-  });
+    updateDirectionList();
+  }
 
   function placeMarker(location) {
     marker = new google.maps.Marker({
@@ -62,7 +77,6 @@ function initMap() {
   function writeDirections(arr) {
     var directionsService = new google.maps.DirectionsService;
     directionsDisplay.setMap(map);
-    directionsDisplay.setDirections({routes: []});
     calculateAndDisplayRoute(directionsService, directionsDisplay, arr);
   }
 
@@ -82,7 +96,6 @@ function initMap() {
         stopover: false
       });
     }
-    console.log(waypts);
 
     directionsService.route({
       origin: arr[0],
@@ -102,16 +115,20 @@ function initMap() {
         //Updates Map Drawn directions
         //directionsDisplay.setDirections(null);
         directionsDisplay.setDirections(response);
-
-        //Updates Written Directions
-        document.getElementById('direction-list').innerHTML = '';
-        directionsDisplay.setPanel(document.getElementById('direction-list'));
-        document.getElementById('direction-content').className = 'yesdirections';
-
       } else {
         window.alert('Directions request failed due to ' + status);
       }
     });
+  }
+
+  function updateDirectionList() {
+    document.getElementById('direction-list').innerHTML = '';
+    if (waypointLatLng.length >= 2){
+      directionsDisplay.setPanel(document.getElementById('direction-list'));
+      document.getElementById('direction-content').className = 'yesdirections';
+    } else {
+      document.getElementById('direction-content').className = 'nodirections';
+    }
   }
 
   document.getElementById('btn-return').addEventListener('click', function() {
@@ -124,13 +141,13 @@ function initMap() {
   document.getElementById('btn-undo').addEventListener('click', function(){
     if (waypointLatLng.length >= 1) {
       waypointLatLng.splice(waypointLatLng.length - 1, 1);
-      writeDirections(waypointLatLng);
+      startDrawingMap();
     }
   });
 
   document.getElementById('btn-clear').addEventListener('click', function(){
     waypointLatLng = [];
-    writenDirections(waypointLatLng);
+    startDrawingMap();
   });
 
   var btnBacktrack = document.getElementById('btn-backtrack');
@@ -144,5 +161,5 @@ function initMap() {
       totalDistance = totalDistance / 2;
       setDistance();
     }
-  })
+  });
 }
