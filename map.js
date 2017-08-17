@@ -119,23 +119,13 @@ var btnBacktrack = document.getElementById('btn-backtrack');
 var goHome = false;
 btnBacktrack.addEventListener("click", function(){
     if (goHome){
-        there = waypointLatLng;
-        for (i=waypointLatLng.length-2; i>-1; i--){
-          waypointLatLng.push(there[i]);
-          writeDirections(waypointLatLng);
-        }
+        totalDistance = totalDistance * 2;
+        setDistance();
         goHome = false;
         btnBacktrack.className = 'side-btns return';
     } else {
-        // for (i=waypointLatLng.length-1; i>=there.length; i--){
-        //   location = waypointLatLng[i];
-        //   marker = new google.maps.Marker({
-        //     position: location,
-        //     map: map
-        //   });
-        //   marker.setMap(null);
-        //   waypointLatLng.pop();
-        // }
+        totalDistance = totalDistance / 2;
+        setDistance();
         goHome = true;
         btnBacktrack.className = 'side-btns noreturn';
     }
