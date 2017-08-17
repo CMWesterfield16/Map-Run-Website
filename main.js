@@ -48,7 +48,7 @@ btnReturn.id = 'btn-return';
 btnUndo.id = 'btn-id';
 btnClear.id = 'btn-clear';
 
-btnReturn.className = 'side-btns';
+btnReturn.className = 'side-btns noreturn';
 btnUndo.className = 'side-btns';
 btnClear.className = 'side-btns';
 
@@ -59,6 +59,17 @@ btnClear.innerText = 'CLEAR';
 buttonDiv.append(btnClear);
 buttonDiv.append(btnUndo);
 buttonDiv.append(btnReturn);
+
+var goHome = false;
+btnReturn.addEventListener("click", function(){
+    if (goHome){
+        goHome = false;
+        btnReturn.className = 'side-btns return';
+    } else {
+        goHome = true;
+        btnReturn.className = 'side-btns noreturn';
+    }
+});
 
 sideBar.append(buttonDiv);
 

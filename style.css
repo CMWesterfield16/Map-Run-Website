@@ -39,6 +39,7 @@
 
 .side-btns {
   color: black;
+  background-color: gray;
   font-size: 1.5em;
   margin: 10px;
   border-style: none;
@@ -72,4 +73,13 @@
 .running {
   background-color: #921616;
   color: white;
+}
+
+.return {
+  background-color: blueviolet;
+  color: white;
+}
+
+.noreturn{
+  background-color: gray;
 }
