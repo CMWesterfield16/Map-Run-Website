@@ -114,6 +114,22 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, arr) {
   });
 }
 
+var btnBacktrack = document.getElementById('btn-backtrack');
+var goHome = false;
+btnBacktrack.addEventListener("click", function(){
+    if (goHome){
+        totalDistance = totalDistance * 2;
+        setDistance();
+        goHome = false;
+        btnBacktrack.className = 'side-btns return';
+    } else {
+        totalDistance = totalDistance / 2;
+        setDistance();
+        goHome = true;
+        btnBacktrack.className = 'side-btns noreturn';
+    }
+});
+  
 document.getElementById('btn-return').addEventListener('click', function() {
   if (waypointLatLng.length >= 2) {
     waypointLatLng.push(waypointLatLng[0]);
@@ -131,4 +147,4 @@ document.getElementById('btn-undo').addEventListener('click', function(){
 document.getElementById('btn-clear').getEventListener('click', function(){
   waypointLatLng = [];
   writenDirections(waypointLatLng);
-});
+ });
