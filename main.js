@@ -18,12 +18,12 @@ mainContent.append(imageHolder);
 
 var map = document.createElement('div');
 map.id = 'map';
-map.className = 'google-not-active';
+map.className = 'google-active';
 imageHolder.append(map);
 
 var streetView = document.createElement('div');
 streetView.id = 'streetView';
-streetView.className = 'google-active';
+streetView.className = 'google-not-active';
 imageHolder.append(streetView);
 
 var sideBar = document.createElement('div');
@@ -92,6 +92,7 @@ playButton.addEventListener("click", function(){
         running = false;
         playButton.className = 'side-btns stopped';
         playButton.innerText = 'RUN';
+        map = document.getElementById('map');
         map.className = 'google-active';
         streetView.className = 'google-not-active';
     } else {
