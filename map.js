@@ -132,4 +132,17 @@ function initMap() {
     waypointLatLng = [];
     writenDirections(waypointLatLng);
   });
+
+  var btnBacktrack = document.getElementById('btn-backtrack');
+  btnBacktrack.addEventListener('click', function(){
+    if (btnBacktrack.className == 'side-btns noreturn'){
+      btnBacktrack.className = 'side-btns return';
+      totalDistance = totalDistance * 2;
+      setDistance();
+    } else {
+      btnBacktrack.className = 'side-btns noreturn';
+      totalDistance = totalDistance / 2;
+      setDistance();
+    }
+  })
 }
