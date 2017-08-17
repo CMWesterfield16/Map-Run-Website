@@ -40,6 +40,8 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+
   map.addListener('click', function(event) {
     waypointLatLng.push(event.latLng);
     if (waypointLatLng.length >= 2) {
@@ -56,95 +58,78 @@ function initMap() {
         map: map
     });
   }
-}
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-}
+  function writeDirections(arr) {
+    var directionsService = new google.maps.DirectionsService;
+    directionsDisplay.setMap(map);
+    directionsDisplay.setDirections({routes: []});
+    calculateAndDisplayRoute(directionsService, directionsDisplay, arr);
+  }
 
-function writeDirections(arr) {
-  var directionsService = new google.maps.DirectionsService;
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  directionsDisplay.setMap(map);
-  directionsDisplay.setDirections({routes: []});
-  calculateAndDisplayRoute(directionsService, directionsDisplay, arr);
-}
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+  }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, arr) {
-  var waypts = [];
-  for (var j = 1; j < (arr.length - 1); j++) {
-    waypts.push({
-      location: arr[j],
-      stopover: false
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, arr) {
+    var waypts = [];
+    for (var j = 1; j < (arr.length - 1); j++) {
+      waypts.push({
+        location: arr[j],
+        stopover: false
+      });
+    }
+    console.log(waypts);
+
+    directionsService.route({
+      origin: arr[0],
+      destination: arr[arr.length - 1],
+      waypoints: waypts,
+      optimizeWaypoints: false,
+      travelMode: 'WALKING'
+    }, function(response, status) {
+      if (status === 'OK') {
+        //Updates Distance
+        var legs = response.routes[0].legs;
+        for(var i=0; i<legs.length; ++i) {
+          totalDistance = legs[i].distance.value;
+        }
+        setDistance();
+
+        //Updates Map Drawn directions
+        //directionsDisplay.setDirections(null);
+        directionsDisplay.setDirections(response);
+
+        //Updates Written Directions
+        document.getElementById('direction-list').innerHTML = '';
+        directionsDisplay.setPanel(document.getElementById('direction-list'));
+        document.getElementById('direction-content').className = 'yesdirections';
+
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
     });
   }
-  console.log(waypts);
 
-  directionsService.route({
-    origin: arr[0],
-    destination: arr[arr.length - 1],
-    waypoints: waypts,
-    optimizeWaypoints: false,
-    travelMode: 'WALKING'
-  }, function(response, status) {
-    if (status === 'OK') {
-      //Updates Distance
-      var legs = response.routes[0].legs;
-      for(var i=0; i<legs.length; ++i) {
-        totalDistance = legs[i].distance.value;
-      }
-      setDistance();
-
-      //Updates Map Drawn directions
-      //directionsDisplay.setDirections(null);
-      directionsDisplay.setDirections(response);
-
-      //Updates Written Directions
-      document.getElementById('direction-list').innerHTML = '';
-      directionsDisplay.setPanel(document.getElementById('direction-list'));
-      document.getElementById('direction-content').className = 'yesdirections';
-
-    } else {
-      window.alert('Directions request failed due to ' + status);
+  document.getElementById('btn-return').addEventListener('click', function() {
+    if (waypointLatLng.length >= 2) {
+      waypointLatLng.push(waypointLatLng[0]);
+      writeDirections(waypointLatLng);
     }
   });
-}
 
-var btnBacktrack = document.getElementById('btn-backtrack');
-var goHome = false;
-btnBacktrack.addEventListener("click", function(){
-    if (goHome){
-        totalDistance = totalDistance * 2;
-        setDistance();
-        goHome = false;
-        btnBacktrack.className = 'side-btns return';
-    } else {
-        totalDistance = totalDistance / 2;
-        setDistance();
-        goHome = true;
-        btnBacktrack.className = 'side-btns noreturn';
+  document.getElementById('btn-undo').addEventListener('click', function(){
+    if (waypointLatLng.length >= 1) {
+      waypointLatLng.splice(waypointLatLng.length - 1, 1);
+      writeDirections(waypointLatLng);
     }
-});
-  
-document.getElementById('btn-return').addEventListener('click', function() {
-  if (waypointLatLng.length >= 2) {
-    waypointLatLng.push(waypointLatLng[0]);
-    writeDirections(waypointLatLng);
-  }
-});
+  });
 
-document.getElementById('btn-undo').addEventListener('click', function(){
-  if (waypointLatLng.length >= 1) {
-    waypointLatLng.splice(waypointLatLng.length - 1, 1);
-    writeDirections(waypointLatLng);
-  }
-});
-
-document.getElementById('btn-clear').getEventListener('click', function(){
-  waypointLatLng = [];
-  writenDirections(waypointLatLng);
- });
+  document.getElementById('btn-clear').addEventListener('click', function(){
+    waypointLatLng = [];
+    writenDirections(waypointLatLng);
+  });
+}
