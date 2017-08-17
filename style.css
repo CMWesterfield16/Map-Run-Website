@@ -18,8 +18,10 @@
   justify-content: center;
 }
 
-#map {
+#image-holder {
   border: 2px solid black;
+  width: 700px;
+  height: 500px;
 }
 
 #side-bar {
@@ -100,4 +102,12 @@
   margin: 5px;
   padding: 10px;
   border: 2px solid black;
+}
+
+.yesShow {
+  display: inherit;
+}
+
+.noShow {
+  display: none;
 }

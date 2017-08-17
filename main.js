@@ -14,6 +14,7 @@ container.append(mainContent);
 /*                  MAP                   */
 var map = document.createElement('div');
 map.id = 'map';
+map.className = 'yesShow';
 mainContent.append(map);
 
 var sideBar = document.createElement('div');
@@ -71,6 +72,11 @@ sideBar.append(buttonDiv);
 
 
 // STREET VIEW PLAYER
+
+var streetDiv = document.createElement('div');
+streetDiv.id = 'street';
+streetDiv.className = 'noShow'
+imageHolder.append(streetDiv);
 
 var running = false;
 var playButton = document.createElement('button');
