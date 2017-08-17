@@ -40,18 +40,22 @@ sideBar.append(dataDiv);
 
 // SIDEBAR NAVIGATION CONTROLS
 var buttonDiv = document.createElement('div');
+var btnBacktrack = document.createElement('BUTTON');
 var btnReturn = document.createElement('BUTTON');
 var btnUndo = document.createElement('BUTTON');
 var btnClear = document.createElement('BUTTON');
 
-btnReturn.id = 'btn-return';
+btnBacktrack.id = 'btn-backtrack';
+btnReturn.id = 'btn-return'
 btnUndo.id = 'btn-id';
 btnClear.id = 'btn-clear';
 
-btnReturn.className = 'side-btns noreturn';
+btnBacktrack.className = 'side-btns noreturn';
+btnReturn.className = 'side-btns';
 btnUndo.className = 'side-btns';
 btnClear.className = 'side-btns';
 
+btnBacktrack.innerText = 'BACK';
 btnReturn.innerText = 'RETURN';
 btnUndo.innerText = 'UNDO';
 btnClear.innerText = 'CLEAR';
@@ -59,17 +63,7 @@ btnClear.innerText = 'CLEAR';
 buttonDiv.append(btnClear);
 buttonDiv.append(btnUndo);
 buttonDiv.append(btnReturn);
-
-var goHome = false;
-btnReturn.addEventListener("click", function(){
-    if (goHome){
-        goHome = false;
-        btnReturn.className = 'side-btns return';
-    } else {
-        goHome = true;
-        btnReturn.className = 'side-btns noreturn';
-    }
-});
+buttonDiv.append(btnBacktrack);
 
 sideBar.append(buttonDiv);
 

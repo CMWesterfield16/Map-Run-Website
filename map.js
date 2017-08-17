@@ -4,19 +4,25 @@
 // locate you.
 var map, infoWindow;
 
+var marker = null;
+
 var totalDistance = 0.00;
 var dataDiv = document.getElementById('data-stream');
 dataDiv.innerHTML = "Run Distance: " + totalDistance + " mi.";
+function setDistance() {
+  var mileDistance = (totalDistance * 0.000621371).toFixed(3);
+  dataDiv.innerHTML = "Run Distance: " + mileDistance + " mi.";
+}
 
-console.log("outside");
+var waypointLatLng = [];
+var there =[];
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 33.980355, lng: -118.422411},
     zoom: 15
   });
   infoWindow = new google.maps.InfoWindow;
-
-  console.log("inside");
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -34,15 +40,19 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-  console.log("got current location");
 
   map.addListener('click', function(event) {
-    console.log("hi");
-    placeMarker(event.latLng);
+    waypointLatLng.push(event.latLng);
+    if (waypointLatLng.length >= 2) {
+      marker.setMap(null);
+      writeDirections(waypointLatLng);
+    } else {
+      placeMarker(event.latLng);
+    }
   });
 
   function placeMarker(location) {
-    var marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: location,
         map: map
     });
@@ -57,35 +67,60 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+function writeDirections(arr) {
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay.setMap(map);
+  for (var i = 0; i < arr.length -1; i++) {
+    calculateAndDisplayRoute(directionsService,
+      directionsDisplay,
+      waypointLatLng[i],
+      waypointLatLng[i + 1]);
+  }
+}
 
-// function dirctionsInitMap() {
-//         var directionsService = new google.maps.DirectionsService;
-//         var directionsDisplay = new google.maps.DirectionsRenderer;
-//         // var map = new google.maps.Map(document.getElementById('map'), {
-//         //   zoom: 7,
-//         //   center: {lat: 41.85, lng: -87.65}
-//         // });
-//         directionsDisplay.setMap(map);
-//
-//         var onChangeHandler = function() {
-//           calculateAndDisplayRoute(directionsService, directionsDisplay);
-//         };
-//         //run onChangeHandler any time a new start and finish are added
-//         //document.getElementById('end').addEventListener('change', onChangeHandler);
-//       }
-//
-//       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-//         directionsService.route({
-//
-//           //find elements start and end, which are the values for map movement
-//           origin: document.getElementById('start').value,
-//           destination: document.getElementById('end').value,
-//           travelMode: 'WALKING'
-//         }, function(response, status) {
-//           if (status === 'OK') {
-//             directionsDisplay.setDirections(response);
-//           } else {
-//             window.alert('Directions request failed due to ' + status);
-//           }
-//         });
-//       }
+function calculateAndDisplayRoute(directionsService, directionsDisplay, start, finish) {
+  directionsService.route({
+    origin: start,
+    destination: finish,
+    travelMode: 'WALKING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      var legs = response.routes[0].legs;
+      for(var i=0; i<legs.length; ++i) {
+        totalDistance += legs[i].distance.value;
+      }
+      setDistance();
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
+
+
+var btnBacktrack = document.getElementById('btn-backtrack');
+var goHome = false;
+btnBacktrack.addEventListener("click", function(){
+    if (goHome){
+        there = waypointLatLng;
+        for (i=waypointLatLng.length-2; i>-1; i--){
+          waypointLatLng.push(there[i]);
+          writeDirections(waypointLatLng);
+        }
+        goHome = false;
+        btnBacktrack.className = 'side-btns return';
+    } else {
+        // for (i=waypointLatLng.length-1; i>=there.length; i--){
+        //   location = waypointLatLng[i];
+        //   marker = new google.maps.Marker({
+        //     position: location,
+        //     map: map
+        //   });
+        //   marker.setMap(null);
+        //   waypointLatLng.pop();
+        // }
+        goHome = true;
+        btnBacktrack.className = 'side-btns noreturn';
+    }
+});

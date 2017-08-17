@@ -32,7 +32,6 @@
   padding: 5px;
   font-size: 1.2em;
   text-align: center;
-  margin: 5px;
   font-family: 'Just Another Hand';
   border: 1px solid purple;
 }
@@ -45,6 +44,7 @@
   border-style: none;
   width: 100px;
   display: block;
+  background-color: grey;
 }
 .side-btns:hover {
   color: white;
@@ -82,4 +82,8 @@
 
 .noreturn{
   background-color: gray;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c61ce9a65b5fa5a3704785c24a8b60bee302de3a
