@@ -42,11 +42,12 @@ sideBar.append(dataDiv);
 var buttonDiv = document.createElement('div');
 var btnBacktrack = document.createElement('BUTTON');
 var btnReturn = document.createElement('BUTTON');
+var btnBacktrack = document.createElement('BUTTON');
 var btnUndo = document.createElement('BUTTON');
 var btnClear = document.createElement('BUTTON');
 
 btnBacktrack.id = 'btn-backtrack';
-btnReturn.id = 'btn-return'
+btnReturn.id = 'btn-return';
 btnUndo.id = 'btn-id';
 btnClear.id = 'btn-clear';
 
@@ -57,6 +58,7 @@ btnClear.className = 'side-btns';
 
 btnBacktrack.innerText = 'BACK';
 btnReturn.innerText = 'RETURN';
+btnBacktrack.innerText = 'BACK';
 btnUndo.innerText = 'UNDO';
 btnClear.innerText = 'CLEAR';
 
@@ -89,3 +91,19 @@ playButton.addEventListener("click", function(){
 
 
 sideBar.append(playButton);
+
+// Directions List
+
+var directionContent = document.createElement('div');
+directionContent.id = 'direction-content';
+directionContent.className = 'nodirections';
+container.append(directionContent);
+
+var directionTitle = document.createElement('div');
+directionTitle.id = 'directionTitle';
+directionTitle.innerHTML = 'Directions';
+directionContent.append(directionTitle);
+
+var directionList = document.createElement('div');
+directionList.id = 'direction-list';
+directionContent.append(directionList);

@@ -1,21 +1,40 @@
 # Map-Run-Website
+function writeDirections(arr) {
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay.setMap(map);
+  for (var i = 0; i < arr.length -1; i++) {
+    calculateAndDisplayRoute(directionsService,
+      directionsDisplay,
+      waypointLatLng[i],
+      waypointLatLng[i + 1]);
+  }
+}
 
-<!DOCTYPE html>
-<html>
+function calculateAndDisplayRoute(directionsService, directionsDisplay, start, finish) {
+  directionsService.route({
+    origin: start,
+    destination: finish,
+    travelMode: 'WALKING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      var legs = response.routes[0].legs;
+      for(var i=0; i<legs.length; ++i) {
+        totalDistance += legs[i].distance.value;
+      }
+      setDistance();
+      directionsDisplay.setDirections(response);
+      directionsDisplay.setPanel(document.getElementById('direction-content'));
+      document.getElementById('direction-content').className = 'yesdirections';
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
 
-<head>
-  <title>Scenic Route Finder</title>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous">
-
-    </script>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-
-<body>
-  <div id="container"></div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src='main.js'></script>
-</body>
-
-</html>
+document.getElementById('btn-return').addEventListener('click', function() {
+  if (waypointLatLng.length >= 2) {
+    waypointLatLng.push(waypointLatLng[0]);
+    writeDirections(waypointLatLng);
+  }
+});
