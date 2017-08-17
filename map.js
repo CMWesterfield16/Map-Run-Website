@@ -8,13 +8,15 @@ var totalDistance = 0.00;
 var dataDiv = document.getElementById('data-stream');
 dataDiv.innerHTML = "Run Distance: " + totalDistance + " mi.";
 
-
+console.log("outside");
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 33.980355, long: -118.422411},
+    center: {lat: 33.980355, lng: -118.422411},
     zoom: 15
   });
   infoWindow = new google.maps.InfoWindow;
+
+  console.log("inside");
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -24,9 +26,6 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -34,6 +33,19 @@ function initMap() {
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
+  }
+  console.log("got current location");
+
+  map.addListener('click', function(event) {
+    console.log("hi");
+    placeMarker(event.latLng);
+  });
+
+  function placeMarker(location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
   }
 }
 
@@ -45,16 +57,35 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-map.addEventListener('click', function(event) {
-  console.log("Lat: " + event.latLng.lat());
-  console.log("Lng: " + event.latLng.lng());
-  placeMarker(event.latLng, map);
-});
 
-function placeMarker(location, map) {
-  var marker = new google.maps.Marker({
-      position: position,
-      map: map
-  });
-  map.panTo(position);
-}
+// function dirctionsInitMap() {
+//         var directionsService = new google.maps.DirectionsService;
+//         var directionsDisplay = new google.maps.DirectionsRenderer;
+//         // var map = new google.maps.Map(document.getElementById('map'), {
+//         //   zoom: 7,
+//         //   center: {lat: 41.85, lng: -87.65}
+//         // });
+//         directionsDisplay.setMap(map);
+//
+//         var onChangeHandler = function() {
+//           calculateAndDisplayRoute(directionsService, directionsDisplay);
+//         };
+//         //run onChangeHandler any time a new start and finish are added
+//         //document.getElementById('end').addEventListener('change', onChangeHandler);
+//       }
+//
+//       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+//         directionsService.route({
+//
+//           //find elements start and end, which are the values for map movement
+//           origin: document.getElementById('start').value,
+//           destination: document.getElementById('end').value,
+//           travelMode: 'WALKING'
+//         }, function(response, status) {
+//           if (status === 'OK') {
+//             directionsDisplay.setDirections(response);
+//           } else {
+//             window.alert('Directions request failed due to ' + status);
+//           }
+//         });
+//       }
