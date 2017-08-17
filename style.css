@@ -27,6 +27,16 @@
   height: 500px;
 }
 
+#map {
+  width: 700px;
+  height: 500px;
+}
+
+#streetView {
+  width: 700px;
+  height: 500px;
+}
+
 #side-bar {
   margin: 5px;
   padding: 10px;

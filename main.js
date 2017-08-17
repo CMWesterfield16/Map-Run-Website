@@ -82,11 +82,6 @@ sideBar.append(buttonDiv);
 
 // STREET VIEW PLAYER
 
-var streetDiv = document.createElement('div');
-streetDiv.id = 'street';
-streetDiv.className = 'noShow'
-imageHolder.append(streetDiv);
-
 var running = false;
 var playButton = document.createElement('button');
 playButton.id = 'street-play';
@@ -103,6 +98,7 @@ playButton.addEventListener("click", function(){
         running = true;
         playButton.className = 'side-btns running';
         playButton.innerText = 'STOP';
+        map = document.getElementById('map');
         map.className = 'google-not-active';
         streetView.className = 'google-active';
     }
