@@ -83,6 +83,28 @@
   display: block;
 }
 
+#data-speed {
+  display: flex;
+  justify-content: center;
+}
+
+#speed-input {
+  width: 20px;
+  height: 10px;
+  margin-left: 5px;
+}
+
+#speed-btn {
+  color: black;
+  background-color: gray;
+  border-style: none;
+  margin-left: 5px;
+}
+
+#speed-btn:hover {
+  color: white;
+}
+
 /*Play button play or stop*/
 .stopped {
   background-color: #2B712B;
@@ -125,10 +147,7 @@
 
 
 /*Switch between google map and google street view*/
-/*.google-active {
-  display: inherit;
 
-}*/
 .google-not-active {
   display: none;
 }
