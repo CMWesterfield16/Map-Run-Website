@@ -3,7 +3,7 @@
 *:focus {
   outline:0;
 }
-
+/*Title of Page*/
 #title {
   color: purple;
   margin: 10px;
@@ -12,11 +12,14 @@
   display: flex;
   justify-content: center;
 }
-
+/*Horizontal Center of Main Content*/
 #main-content {
   display: flex;
   justify-content: center;
 }
+
+
+/*Add border to elements*/
 
 #image-holder {
   border: 2px solid black;
@@ -30,6 +33,7 @@
   border: 2px solid black;
 }
 
+/*Distance counter formatting*/
 #data-stream {
   padding: 5px;
   font-size: 1.2em;
@@ -38,6 +42,7 @@
   border: 1px solid purple;
 }
 
+/*Side buttons formatting*/
 .side-btns {
   color: black;
   background-color: gray;
@@ -52,6 +57,7 @@
   color: white;
 }
 
+/*Make title look like a title and not a button*/
 #title-sideBar {
   background: none;
 }
@@ -67,6 +73,7 @@
   display: block;
 }
 
+/*Play button play or stop*/
 .stopped {
   background-color: #2B712B;
   color: white;
@@ -77,6 +84,7 @@
   color: white;
 }
 
+/*Return button on or off*/
 .return {
   background-color: blueviolet;
   color: white;
@@ -86,6 +94,7 @@
   background-color: gray;
 }
 
+/*Direction Box*/
 #directionTitle {
   padding: 5px;
   font-size: 2em;
@@ -104,10 +113,13 @@
   border: 2px solid black;
 }
 
-.yesShow {
-  display: inherit;
-}
 
-.noShow {
+/*Switch between google map and google street view*/
+.google-active {
+  display: inherit;
+
+}
+.google-not-active {
   display: none;
 }
+
