@@ -221,3 +221,41 @@ function initialize() {
         zoom: 1
       });
 }
+
+// STREET VIEW PLAYER
+var running = false;
+var player = document.getElementById('streetView');
+var playButton = document.getElementById('street-play');
+playButton.addEventListener("click", function(){
+  if (running){
+    running = false;
+    playButton.className = 'side-btns stopped';
+    playButton.innerText = 'RUN';
+    map = document.getElementById('map');
+    map.className = 'google-active';
+    streetView = document.getElementById('streetView');
+    streetView.className = 'google-not-active';
+  } else {
+    running = true;
+    playButton.className = 'side-btns running';
+    playButton.innerText = 'STOP';
+    map = document.getElementById('map');
+    map.className = 'google-not-active';
+    streetView = document.getElementById('streetView');
+    streetView.className = 'google-active';
+  }
+  
+  var id = setInterval(frame, 5000);
+  var index = 0;
+
+  function frame() {
+      if (index == waypointLatLng.length) {
+          clearInterval(id);
+      } else {
+          panorama = new google.maps.StreetViewPanorama(
+            player,
+            {position: waypointLatLng[index++]}
+          );  
+      }
+  }
+});

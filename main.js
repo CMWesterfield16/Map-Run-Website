@@ -82,30 +82,10 @@ sideBar.append(buttonDiv);
 
 // STREET VIEW PLAYER
 
-var running = false;
 var playButton = document.createElement('button');
 playButton.id = 'street-play';
 playButton.className = 'side-btns stopped';
 playButton.innerText = 'RUN';
-playButton.addEventListener("click", function(){
-    if (running){
-        running = false;
-        playButton.className = 'side-btns stopped';
-        playButton.innerText = 'RUN';
-        map = document.getElementById('map');
-        map.className = 'google-active';
-        streetView = document.getElementById('streetView');
-        streetView.className = 'google-not-active';
-    } else {
-        running = true;
-        playButton.className = 'side-btns running';
-        playButton.innerText = 'STOP';
-        map = document.getElementById('map');
-        map.className = 'google-not-active';
-        streetView = document.getElementById('streetView');
-        streetView.className = 'google-active';
-    }
-});
 
 
 sideBar.append(playButton);
