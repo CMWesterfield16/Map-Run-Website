@@ -170,7 +170,7 @@ ideasContainer.append(ideasContent);
 
 var ideasPrompt = document.createElement('div');
 ideasPrompt.id = 'ideas-prompt';
-ideasPrompt.innerHTML = 'Find Waypoint at Distance: ';
+ideasPrompt.innerHTML = 'Find Waypoint Within Distance: ';
 ideasHeader.append(ideasPrompt);
 
 var ideasInput = document.createElement('INPUT');
