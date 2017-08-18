@@ -227,6 +227,7 @@ function initMap() {
 
 /******************   STREET VIEW **********************/
 
+var index = 0;
 var panorama;
 function initialize() {
   panorama = new google.maps.StreetViewPanorama(
@@ -246,32 +247,54 @@ playButton.addEventListener("click", function(){
   if (running){
     running = false;
     playButton.className = 'side-btns stopped';
-    playButton.innerText = 'RUN';
+    playButton.innerText = 'STREET';
     map = document.getElementById('map');
     map.className = 'google-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-not-active';
+    lBtn.className = 'side-btns ctrlBtns google-not-active';
+    rBtn.className = 'side-btns ctrlBtns google-not-active';
   } else {
     running = true;
     playButton.className = 'side-btns running';
-    playButton.innerText = 'STOP';
+    playButton.innerText = 'MAP';
     map = document.getElementById('map');
     map.className = 'google-not-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-active';
-  }
+    
+    lBtn.className = 'side-btns ctrlBtns google-active';
+    rBtn.className = 'side-btns ctrlBtns google-active';
 
-  var id = setInterval(frame, 5000);
-  var index = 0;
-
-  function frame() {
-      if (index == waypointLatLng.length) {
-          clearInterval(id);
-      } else {
-          panorama = new google.maps.StreetViewPanorama(
-            player,
-            {position: waypointLatLng[index++]}
-          );
+    panorama = new google.maps.StreetViewPanorama(
+      player,
+      {
+        position: waypointLatLng[0]
       }
+    );
   }
+
+  lBtn.addEventListener("click", function() {
+    if (index > 0){
+      index--;
+      panorama = new google.maps.StreetViewPanorama(
+        player,
+        {
+          position: waypointLatLng[index]
+        }
+      );
+    }
+  });
+
+  rBtn.addEventListener("click", function() {
+    if (index < waypointLatLng.length-1){
+      index++;
+      panorama = new google.maps.StreetViewPanorama(
+        player,
+        {
+          position: waypointLatLng[index]
+        }
+      );
+    }
+  });  
 });

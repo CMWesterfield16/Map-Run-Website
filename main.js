@@ -109,10 +109,24 @@ sideBar.append(buttonDiv);
 var playButton = document.createElement('button');
 playButton.id = 'street-play';
 playButton.className = 'side-btns stopped';
-playButton.innerText = 'RUN';
+playButton.innerText = 'STREET';
 
+var lBtn = document.createElement('BUTTON');
+var rBtn = document.createElement('BUTTON');
+lBtn.id = ('left-button');
+rBtn.id = ('right-button');
+lBtn.className = 'side-btns ctrlBtns google-not-active';
+rBtn.className = 'side-btns ctrlBtns google-not-active';
+lBtn.innerText = "<";
+rBtn.innerText = ">";
+
+var ctrlBtns = document.createElement('div');
+ctrlBtns.id = 'controls';
+ctrlBtns.append(lBtn);
+ctrlBtns.append(rBtn);
 
 sideBar.append(playButton);
+sideBar.append(ctrlBtns);
 
 // Directions List
 
