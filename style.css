@@ -64,13 +64,16 @@
 .side-btns {
   color: black;
   font-size: 1.5em;
+  font-family: 'Just Another Hand';
   text-align: center;
+  padding: 5px;
   margin: 0 auto;
   margin-top: 5px;
   margin-bottom: 5px;
   border-style: none;
   width: 100px;
   display: block;
+  vertical-align: middle;
   background-color: grey;
 }
 .side-btns:hover {
@@ -78,31 +81,18 @@
 }
 
 /*Make title look like a title and not a button*/
-/*#sideBarTitle {
-  color: black;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-style: none;
-  width: 100px;
-  display: block;
-  background: none;
-  font-size: 2em;
-  font-family: 'Just Another Hand', cursive;
-}*/
 
 .title-elements {
   color: black;
   font-size: 2em;
   font-family: 'Just Another Hand', cursive;
   text-align: center;
+  padding: 0px;
   margin: 0 auto;
   margin-top: 5px;
   margin-bottom: 5px;
   border-style: none;
   width: 100px;
-  display: block;
   background: none;
 }
 
@@ -120,6 +110,7 @@
 #speed-btn {
   color: black;
   background-color: gray;
+  font-family: 'Just Another Hand';
   border-style: none;
   margin-left: 5px;
 }
