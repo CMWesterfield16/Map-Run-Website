@@ -136,8 +136,8 @@ var lBtn = document.createElement('BUTTON');
 var rBtn = document.createElement('BUTTON');
 lBtn.id = ('left-button');
 rBtn.id = ('right-button');
-lBtn.className = 'side-btns ctrlBtns google-not-active';
-rBtn.className = 'side-btns ctrlBtns google-not-active';
+lBtn.className = 'side-btns ctrlBtns controls-not-active';
+rBtn.className = 'side-btns ctrlBtns controls-not-active';
 lBtn.innerText = "<";
 rBtn.innerText = ">";
 

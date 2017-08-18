@@ -252,8 +252,8 @@ playButton.addEventListener("click", function(){
     map.className = 'google-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-not-active';
-    lBtn.className = 'side-btns ctrlBtns google-not-active';
-    rBtn.className = 'side-btns ctrlBtns google-not-active';
+    lBtn.className = 'side-btns ctrlBtns controls-not-active';
+    rBtn.className = 'side-btns ctrlBtns controls-not-active';
   } else {
     running = true;
     playButton.className = 'side-btns running';
