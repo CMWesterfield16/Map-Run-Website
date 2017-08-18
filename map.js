@@ -24,7 +24,6 @@ function setDistance() {
   var mileDistance = (totalDistance * 0.000621371).toFixed(3);
   dataDistance.innerHTML = "Run Distance: " + mileDistance + " mi.";
 
-  console.log(givenSpeed);
   let date = new Date(null);
   date.setSeconds(mileDistance / (givenSpeed/3600));
   var calculatedDuration = date.toISOString().substr(11, 8);
@@ -219,16 +218,12 @@ function initMap() {
     //the array of location markers or the direction list
   });
 
+  //Gets the speed input and then uses it to find duration
   document.getElementById('speed-btn').addEventListener('click', function() {
-    givenSpeed = parseInt(document.getElementById('speed-input').value);
+    givenSpeed = parseFloat(document.getElementById('speed-input').value);
     setDistance();
   });
 }
-
-
-
-
-
 
 /******************   STREET VIEW **********************/
 
@@ -267,6 +262,7 @@ playButton.addEventListener("click", function(){
     map.className = 'google-not-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-active';
+    
     lBtn.className = 'side-btns ctrlBtns google-active';
     rBtn.className = 'side-btns ctrlBtns google-active';
 
