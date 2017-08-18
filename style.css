@@ -18,6 +18,44 @@
   height: 50px;
 }
 
+/*Overall formatting classes*/
+.section-title {
+  padding: 5px;
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Just Another Hand';
+}
+
+.section-text {
+  padding: 5px;
+  font-size: 1.2em;
+  text-align: center;
+  font-family: 'Just Another Hand';
+}
+
+.container-formatting {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.btn-properties {
+  color: black;
+  background-color: gray;
+  font-family: 'Just Another Hand';
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-style: none;
+  display: block;
+}
+
+
+.btn-properties:hover {
+  color: white;
+}
+
 /*Horizontal Center of Main Content*/
 #main-content {
   display: flex;
@@ -53,48 +91,19 @@
 /*Distance counter formatting*/
 #data-stream {
   padding: 5px;
-  font-size: 1.2em;
-  text-align: center;
-  font-family: 'Just Another Hand';
   border: 1px solid blue;
 }
 
 /*Side buttons formatting*/
 
 .side-btns {
-  color: black;
   font-size: 1.5em;
-  font-family: 'Just Another Hand';
-  text-align: center;
   padding: 5px;
-  margin: 0 auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-style: none;
   width: 100px;
-  display: block;
   vertical-align: middle;
-  background-color: grey;
-}
-.side-btns:hover {
-  color: white;
 }
 
-/*Make title look like a title and not a button*/
-
-.title-elements {
-  color: black;
-  font-size: 2em;
-  font-family: 'Just Another Hand', cursive;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-style: none;
-  width: 100px;
-  display: block;
-  background: none;
-}
+/*Make menu title look like a title and not a button*/
 
 #data-speed {
   display: flex;
@@ -105,18 +114,6 @@
   width: 20px;
   height: 10px;
   margin-left: 5px;
-}
-
-#speed-btn {
-  color: black;
-  background-color: gray;
-  font-family: 'Just Another Hand';
-  border-style: none;
-  margin-left: 5px;
-}
-
-#speed-btn:hover {
-  color: white;
 }
 
 /*Play button play or stop*/
@@ -140,26 +137,6 @@
   background-color: gray;
 }
 
-/*Direction Box*/
-#directionTitle {
-  padding: 5px;
-  font-size: 2em;
-  text-align: center;
-  font-family: 'Just Another Hand';
-}
-
-.nodirections{
-  display: none;
-}
-
-.yesdirections{
-  display: inherit;
-  margin: 5px;
-  padding: 10px;
-  border: 2px solid black;
-}
-
-
 /*Switch between google map and google street view*/
 .google-not-active {
   display: none;
@@ -179,38 +156,39 @@
   visibility: hidden;
 }
 
-/*Ideas Header Structure*/
-#ideas-container {
-  margin: 5px;
-  padding: 10px;
-  border: 2px solid black;
+/*Bottom Container Formatting*/
+#bottom-container {
+  display: flex;
+  justify-content: center;
 }
 
-#ideas-title {
-  padding: 5px;
-  font-size: 2em;
-  text-align: center;
-  font-family: 'Just Another Hand';
+#saved-content {
+  width: 50%;
 }
 
+#direction-content {
+  width: 50%;
+}
+
+/*Direction Box*/
+
+.nodirections{
+  display: none;
+}
+
+.yesdirections{
+  display: inherit;
+}
+
+
+/*Ideas Formatting*/
 #ideas-header {
   display: flex;
   justify-content: center;
 }
 
-#ideas-prompt {
-  color: black;
-  font-family: 'Just Another Hand';
-  font-size: 1.5em;
-  margin-left: 5px;
-}
-
 #ideas-go-btn {
-  color: black;
-  background-color: gray;
   font-size: 1.5em;
-  font-family: 'Just Another Hand';
-  border-style: none;
   margin-left: 5px;
   margin-right: 5px;
 }

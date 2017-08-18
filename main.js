@@ -55,9 +55,9 @@ mainContent.append(imageHolder);
 /*               SIDEBAR                */
 
 // SIDEBAR TITLE
-var sideBarTitle = document.createElement('BUTTON');
+var sideBarTitle = document.createElement('div');
 sideBarTitle.id = 'title-sideBar';
-sideBarTitle.className = 'title-elements';
+sideBarTitle.className = 'section-title';
 sideBarTitle.innerText = 'MENU';
 sideBar.append(sideBarTitle);
 
@@ -65,7 +65,7 @@ sideBar.append(sideBarTitle);
 
 var dataDiv = document.createElement('div');
 dataDiv.id = 'data-stream';
-dataDiv.className = 'data-sidebar';
+dataDiv.className = 'data-sidebar section-text';
 sideBar.append(dataDiv);
 
 var distanceData = document.createElement('div');
@@ -87,6 +87,7 @@ speedInput.id = 'speed-input';
 speedInput.setAttribute("type", "text");
 var speedBtn = document.createElement("BUTTON");
 speedBtn.id = 'speed-btn';
+speedBtn.className = 'btn-properties';
 speedBtn.innerHTML = "GO";
 
 speedData.append(speedText);
@@ -106,10 +107,10 @@ btnReturn.id = 'btn-return';
 btnUndo.id = 'btn-undo';
 btnClear.id = 'btn-clear';
 
-btnBacktrack.className = 'side-btns noreturn';
-btnReturn.className = 'side-btns';
-btnUndo.className = 'side-btns';
-btnClear.className = 'side-btns';
+btnBacktrack.className = 'side-btns noreturn btn-properties';
+btnReturn.className = 'side-btns btn-properties';
+btnUndo.className = 'side-btns btn-properties';
+btnClear.className = 'side-btns btn-properties';
 
 btnBacktrack.innerText = 'BACK';
 btnReturn.innerText = 'RETURN';
@@ -129,15 +130,15 @@ sideBar.append(buttonDiv);
 
 var playButton = document.createElement('button');
 playButton.id = 'street-play';
-playButton.className = 'side-btns stopped';
+playButton.className = 'side-btns stopped btn-properties';
 playButton.innerText = 'STREET';
 
 var lBtn = document.createElement('BUTTON');
 var rBtn = document.createElement('BUTTON');
 lBtn.id = ('left-button');
 rBtn.id = ('right-button');
-lBtn.className = 'side-btns ctrlBtns controls-not-active';
-rBtn.className = 'side-btns ctrlBtns controls-not-active';
+lBtn.className = 'side-btns btn-properties ctrlBtns controls-not-active';
+rBtn.className = 'side-btns btn-properties ctrlBtns controls-not-active';
 lBtn.innerText = "<";
 rBtn.innerText = ">";
 
@@ -152,11 +153,13 @@ sideBar.append(ctrlBtns);
 //Waypoint Ideas setDirections
 var ideasContainer = document.createElement('div');
 ideasContainer.id = 'ideas-container';
+ideasContainer.className = 'container-formatting';
 mainContent.append(ideasContainer);
 
 var ideasTitle = document.createElement('div');
 ideasTitle.id = 'ideas-title';
-ideasTitle.innerHTML = 'GET WAYPOINT IDEAS'
+ideasTitle.innerHTML = 'GET WAYPOINT IDEAS';
+ideasTitle.className = 'section-title';
 ideasContainer.append(ideasTitle);
 
 var ideasHeader = document.createElement('div');
@@ -165,12 +168,12 @@ ideasContainer.append(ideasHeader);
 
 var ideasContent = document.createElement('div');
 ideasContent.id = 'ideas-content';
-ideasContent.className = 'nodirections';
 ideasContainer.append(ideasContent);
 
 var ideasPrompt = document.createElement('div');
 ideasPrompt.id = 'ideas-prompt';
 ideasPrompt.innerHTML = 'Find Waypoint at Distance: ';
+ideasPrompt.className = 'section-text';
 ideasHeader.append(ideasPrompt);
 
 var ideasInput = document.createElement('INPUT');
@@ -181,23 +184,57 @@ ideasHeader.append(ideasInput);
 
 var ideasGoBtn = document.createElement('BUTTON');
 ideasGoBtn.id = 'ideas-go-btn';
+ideasGoBtn.className = 'btn-properties';
 ideasGoBtn.innerHTML = 'FIND';
 ideasHeader.append(ideasGoBtn);
 
 
 
-// Directions List
+// Bottom Content
+
+var bottomContainer = document.createElement('div');
+bottomContainer.id = 'bottom-container';
+container.append(bottomContainer);
+
+//Saved maps
+
+var savedContent = document.createElement('div');
+savedContent.id = 'saved-content';
+savedContent.className = 'container-formatting';
+bottomContainer.append(savedContent);
+
+var savedTitle = document.createElement('div');
+savedTitle.id = 'saved-title';
+savedTitle.innerHTML = 'SAVED MAPS';
+savedTitle.className = 'section-title';
+savedContent.append(savedTitle);
+
+var savedPlaceholder = document.createElement('div');
+savedPlaceholder.id = 'saved-placeholder';
+savedPlaceholder.innerHTML = 'If you like a map you made, hit SAVE!';
+savedPlaceholder.className = 'section-text';
+savedContent.append(savedPlaceholder);
+
+//Direction List
 
 var directionContent = document.createElement('div');
 directionContent.id = 'direction-content';
-directionContent.className = 'nodirections';
-container.append(directionContent);
+directionContent.className = 'container-formatting';
+bottomContainer.append(directionContent);
 
 var directionTitle = document.createElement('div');
-directionTitle.id = 'directionTitle';
+directionTitle.id = 'direction-title';
+directionTitle.className = 'section-title';
 directionTitle.innerHTML = 'DIRECTIONS';
 directionContent.append(directionTitle);
 
+var directionPlaceholder = document.createElement('div');
+directionPlaceholder.id = 'direction-placeholder';
+directionPlaceholder.innerHTML = 'Click on the map to get directions for your run!';
+directionPlaceholder.className = 'section-text';
+directionContent.append(directionPlaceholder);
+
 var directionList = document.createElement('div');
 directionList.id = 'direction-list';
+directionList.className = 'nodirections';
 directionContent.append(directionList);
