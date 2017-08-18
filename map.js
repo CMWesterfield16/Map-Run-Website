@@ -164,10 +164,12 @@ function initMap() {
     if (waypointLatLng.length >= 2){
       //if 2 or more markers, updates direction list and shows it
       directionsDisplay.setPanel(document.getElementById('direction-list'));
-      document.getElementById('direction-content').className = 'yesdirections';
+      document.getElementById('direction-list').className = 'yesdirections';
+      document.getElementById('direction-placeholder').className = 'nodirections';
     } else {
       //if no markers or only one marker, gets rid of direction list
-      document.getElementById('direction-content').className = 'nodirections';
+      document.getElementById('direction-list').className = 'nodirections';
+      document.getElementById('direction-placeholder').className = 'yesdirections';
     }
   }
 
