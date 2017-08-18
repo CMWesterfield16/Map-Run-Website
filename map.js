@@ -8,7 +8,7 @@ var marker = null;
 
 //Counts Distance
 var totalDistance = (0).toFixed(3);
-var givenSpeed = 10;
+var givenSpeed = 6;
 var totalDuration = "00:00:00";
 
 var dataDistance = document.getElementById('data-distance');
@@ -16,7 +16,7 @@ dataDistance.innerHTML = "Run Distance: " + totalDistance + " mi.";
 var speedText = document.getElementById('speed-text');
 speedText.innerHTML = "Run Speed MPH: "
 var speedInput = document.getElementById('speed-input');
-speedInput.value = 10;
+speedInput.value = givenSpeed;
 var dataDuration = document.getElementById('data-duration');
 dataDuration.innerHTML = "Run Duration: " + totalDuration;
 
@@ -262,7 +262,7 @@ playButton.addEventListener("click", function(){
     map.className = 'google-not-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-active';
-    
+
     lBtn.className = 'side-btns ctrlBtns google-active';
     rBtn.className = 'side-btns ctrlBtns google-active';
 
@@ -296,5 +296,5 @@ playButton.addEventListener("click", function(){
         }
       );
     }
-  });  
+  });
 });
