@@ -266,12 +266,21 @@ playButton.addEventListener("click", function(){
     lBtn.className = 'side-btns ctrlBtns google-active';
     rBtn.className = 'side-btns ctrlBtns google-active';
 
-    panorama = new google.maps.StreetViewPanorama(
-      player,
-      {
-        position: waypointLatLng[0]
-      }
-    );
+    if (waypointLatLng.length != 0){
+      panorama = new google.maps.StreetViewPanorama(
+       player,
+       {
+         position: waypointLatLng[0]
+       }
+     );
+    } else {
+      panorama = new google.maps.StreetViewPanorama(
+        player,
+        {
+          position: {lat: 33.980355, lng: -118.422411}
+        }
+      );
+    }
   }
 
   lBtn.addEventListener("click", function() {
