@@ -182,28 +182,32 @@ var btnReturn = document.createElement('BUTTON');
 var btnBacktrack = document.createElement('BUTTON');
 var btnUndo = document.createElement('BUTTON');
 var btnClear = document.createElement('BUTTON');
-// var btnSave = document.
+var btnSave = document.createElement('BUTTON');
 
 btnBacktrack.id = 'btn-backtrack';
 btnReturn.id = 'btn-return';
 btnUndo.id = 'btn-undo';
 btnClear.id = 'btn-clear';
+btnSave.id = 'btn-save';
 
 btnBacktrack.className = 'side-btns noreturn btn-properties';
 btnReturn.className = 'side-btns btn-properties';
 btnUndo.className = 'side-btns btn-properties';
 btnClear.className = 'side-btns btn-properties';
+btnSave.className = 'side-btns btn-properties';
 
 btnBacktrack.innerText = 'BACK';
 btnReturn.innerText = 'RETURN';
 btnBacktrack.innerText = 'BACK';
 btnUndo.innerText = 'UNDO';
 btnClear.innerText = 'CLEAR';
+btnSave.innerText = 'SAVE';
 
 buttonDiv.append(btnClear);
 buttonDiv.append(btnUndo);
 buttonDiv.append(btnReturn);
 buttonDiv.append(btnBacktrack);
+buttonDiv.append(btnSave);
 
 sideBar.append(buttonDiv);
 
