@@ -5,13 +5,19 @@
 }
 /*Title of Page*/
 #title {
-  color: purple;
+  color: blue;
   margin: 10px;
   font-size: 4em;
   font-family: 'Just Another Hand', cursive;
   display: flex;
   justify-content: center;
 }
+
+#id {
+  width: 50px;
+  height: 50px;
+}
+
 /*Horizontal Center of Main Content*/
 #main-content {
   display: flex;

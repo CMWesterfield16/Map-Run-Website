@@ -1,9 +1,28 @@
-document.title = ("Scenic Route Finder");
+document.title = ("Run-A-Way");
 
 var titleBar = document.createElement('div');
 titleBar.id = 'title';
-titleBar.innerHTML = 'Scenic Route Planner';
 container.append(titleBar);
+
+var titleText = document.createElement('div');
+titleText.id = 'title-text';
+titleText.innerHTML = 'Run-A-Way';
+titleBar.append(titleText);
+
+var logo = document.createElement('div');
+logo.id = 'logo';
+titleBar.append(logo);
+
+var img = document.createElement("IMG");
+img.id = 'id';
+img.src = 'runningman.png';
+logo.appendChild(img);
+
+// var img = new Image();
+//
+// img.onload = function() {
+//   logo.append(img);
+// };
 
 
 /*************** MAIN CONTENT *****************/
