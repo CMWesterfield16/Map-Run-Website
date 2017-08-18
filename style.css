@@ -189,6 +189,14 @@
   visibility: hidden;
 }
 
+/*Ideas Header Structure*/
+#ideas-container {
+  width: 300px;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
 /*Bottom Container Formatting*/
 #bottom-container {
   display: flex;
@@ -226,12 +234,28 @@
   margin-right: 5px;
 }
 
+
+#ideas-go-btn:hover {
+  color: white;
+}
+
+.result-display {
+  background-color: #A5CDEF;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid gray;
+  font-family: 'Just Another Hand';
+  font-size: 2em;
+  text-align: center;
+  width: 280px;
+}
+
 #btn-signout {
   font-size: 2em;
 }
 
 /* Login Page vs Main Page*/
-
 .hidden-container {
   display: none;
 }
@@ -239,3 +263,4 @@
 .active-container {
   display: inherit;
 }
+

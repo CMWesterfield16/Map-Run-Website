@@ -35,7 +35,7 @@ var waypointLatLng = [];
 
 function initMain() {
   initMap();
-  initialize();
+  initStreet();
 }
 
 //Initializes function which is called in HTML file
@@ -225,13 +225,89 @@ function initMap() {
     givenSpeed = parseFloat(document.getElementById('speed-input').value);
     setDistance();
   });
+
+  /******************** PLACES **********************/
+
+  var searchPoint = {lat: 33.980355, lng: -118.422411};
+  var searchResults = [];
+  
+  var findInput = document.getElementById('ideas-input');
+  var findBtn = document.getElementById('ideas-go-btn');
+  var resultsDiv = document.getElementById('ideas-container');
+  
+  initPlaces();
+
+  function initPlaces(){
+    var places = new google.maps.places.PlacesService(map);
+    
+    findBtn.addEventListener("click", function(){
+      var radius = findInput.value / 0.000621371;
+      
+      if (waypointLatLng.length > 0){
+        searchPoint = waypointLatLng[waypointLatLng.length-1];
+      } else searchPoint = {lat: 33.980355, lng: -118.422411};
+    
+      places.nearbySearch({
+        location: searchPoint,
+        radius: radius,
+        type: 'store'
+      }, addResults);
+      
+      displayTopResults();
+    });
+  }
+  
+  function addResults(results, status) {
+    searchResults = results;
+  }
+  
+  function displayTopResults(){
+    trimResults(5);
+  
+    for (i=0; i<searchResults.length; i++){
+      display(searchResults[i]);
+    }
+  }
+  
+  function trimResults(n){
+    searchResults = searchResults.slice(0,n);
+  }
+  
+  function display(result){
+    var name = result.name;
+    var location = result.geometry.location;
+    var marker;
+  
+    var div = document.createElement('div');
+    div.className = 'result-display';
+    div.innerText = name;
+  
+    div.addEventListener("mouseover", function(){
+      marker = new google.maps.Marker({
+        map: map,
+        position: location
+      });
+    });
+  
+    div.addEventListener("mouseleave", function(){
+      marker.setMap(null);
+    });
+  
+    div.addEventListener("click", function(){
+      waypointLatLng.push(location);
+      startDrawingMap();
+    });
+  
+    resultsDiv.append(div);
+  }
+
 }
 
 /******************   STREET VIEW **********************/
 
 var index = 0;
 var panorama;
-function initialize() {
+function initStreet() {
   panorama = new google.maps.StreetViewPanorama(
       document.getElementById('streetView'),
       {
@@ -309,6 +385,7 @@ playButton.addEventListener("click", function(){
     }
   });
 });
+
 
 
 /******************** PLACES **********************/
