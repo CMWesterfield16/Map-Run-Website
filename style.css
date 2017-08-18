@@ -174,3 +174,37 @@
 .ctrlBtns {
   width: 40px;
 }
+
+/*Ideas Header Structure*/
+#ideas-container {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+#ideas-title {
+  padding: 5px;
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Just Another Hand';
+}
+
+#ideas-header {
+  display: flex;
+  justify-content: center;
+}
+
+#ideas-prompt {
+  color: black;
+  font-family: 'Just Another Hand';
+  font-size: 1.5em;
+}
+
+#ideas-go-btn {
+  color: black;
+  background-color: gray;
+  font-size: 1.5em;
+  font-family: 'Just Another Hand';
+  border-style: none;
+  margin-left: 5px;
+}
