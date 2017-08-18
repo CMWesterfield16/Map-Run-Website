@@ -307,3 +307,7 @@ playButton.addEventListener("click", function(){
     }
   });
 });
+
+
+/******************** PLACES **********************/
+
