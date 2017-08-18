@@ -56,6 +56,39 @@
   color: white;
 }
 
+/*Login Contents Formatting*/
+
+#login-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+#login-content {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  display: block;
+}
+
+#login-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.login-divs {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-inputs {
+  width: 50%;
+}
+
+.login-btns {
+  font-size: 1.3em;
+}
+
 /*Horizontal Center of Main Content*/
 #main-content {
   display: flex;
@@ -191,4 +224,18 @@
   font-size: 1.5em;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+#btn-signout {
+  font-size: 2em;
+}
+
+/* Login Page vs Main Page*/
+
+.hidden-container {
+  display: none;
+}
+
+.active-container {
+  display: inherit;
 }
