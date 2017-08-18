@@ -20,82 +20,112 @@ logo.appendChild(img);
 
 //Creates Login vs Page Containers and set Login as active
 
-var loginContainer = document.createElement('div');
 var pageContainer = document.createElement('div');
-
-loginContainer.id = 'login-container';
 pageContainer.id = 'page-container';
-
-loginContainer.className = 'active-container';
 pageContainer.className = 'hidden-container';
-
-container.append(loginContainer);
 container.append(pageContainer);
 
 /*************** LOGIN CONTENT *****************/
 
-var loginContent = document.createElement('div');
-loginContent.id = 'login-content';
-loginContent.className = 'container-formatting';
-loginContainer.append(loginContent);
+function makeLoginContainer() {
+  var loginContainer = document.createElement('div');
+  loginContainer.id = 'login-container';
+  loginContainer.className = 'active-container';
+  container.append(loginContainer);
 
-var loginTitle = document.createElement('div');
-loginTitle.id = 'login-title';
-loginTitle.className = 'section-title';
-loginTitle.innerHTML = 'LOGIN';
-loginContent.append(loginTitle);
+  var loginContent = document.createElement('div');
+  loginContent.id = 'login-content';
+  loginContent.className = 'container-formatting';
+  loginContainer.append(loginContent);
 
-var loginEmailDiv = document.createElement('div');
-loginEmailDiv.id = 'login-email-div';
-loginEmailDiv.className = 'login-divs';
-loginContent.append(loginEmailDiv);
+  var loginTitle = document.createElement('div');
+  loginTitle.id = 'login-title';
+  loginTitle.className = 'section-title';
+  loginTitle.innerHTML = 'LOGIN';
+  loginContent.append(loginTitle);
 
-var loginEmailText = document.createElement('div');
-loginEmailText.id = 'login-email-text';
-loginEmailText.className = 'section-text';
-loginEmailText.innerHTML = 'EMAIL:';
-loginEmailDiv.append(loginEmailText);
+  var loginEmailDiv = document.createElement('div');
+  loginEmailDiv.id = 'login-email-div';
+  loginEmailDiv.className = 'login-divs';
+  loginContent.append(loginEmailDiv);
 
-var loginEmailInput = document.createElement('INPUT');
-loginEmailInput.setAttribute("type", "text");
-loginEmailInput.id = 'login-email-input';
-loginEmailInput.placeholder = 'Type Email Here';
-loginEmailInput.className = 'login-inputs';
-loginEmailDiv.append(loginEmailInput);
+  var loginEmailText = document.createElement('div');
+  loginEmailText.id = 'login-email-text';
+  loginEmailText.className = 'section-text';
+  loginEmailText.innerHTML = 'EMAIL:';
+  loginEmailDiv.append(loginEmailText);
 
-var loginPasswordDiv = document.createElement('div');
-loginPasswordDiv.id = 'login-password-div';
-loginPasswordDiv.className = 'login-divs';
-loginContent.append(loginPasswordDiv);
+  var loginEmailInput = document.createElement('INPUT');
+  loginEmailInput.setAttribute("type", "text");
+  loginEmailInput.id = 'login-email-input';
+  loginEmailInput.placeholder = 'Type Email Here';
+  loginEmailInput.className = 'login-inputs';
+  loginEmailDiv.append(loginEmailInput);
 
-var loginPasswordText = document.createElement('div');
-loginPasswordText.id = 'login-password-text';
-loginPasswordText.className = 'section-text';
-loginPasswordText.innerHTML = 'PASSWORD:';
-loginPasswordDiv.append(loginPasswordText);
+  var loginPasswordDiv = document.createElement('div');
+  loginPasswordDiv.id = 'login-password-div';
+  loginPasswordDiv.className = 'login-divs';
+  loginContent.append(loginPasswordDiv);
 
-var loginPasswordInput = document.createElement('INPUT');
-loginPasswordInput.setAttribute("type", "text");
-loginPasswordInput.id = 'login-password-input';
-loginPasswordInput.placeholder = 'Type Password Here';
-loginPasswordInput.className = 'login-inputs';
-loginPasswordDiv.append(loginPasswordInput);
+  var loginPasswordText = document.createElement('div');
+  loginPasswordText.id = 'login-password-text';
+  loginPasswordText.className = 'section-text';
+  loginPasswordText.innerHTML = 'PASSWORD:';
+  loginPasswordDiv.append(loginPasswordText);
 
-var loginBtns = document.createElement('div');
-loginBtns.id = 'login-btns';
-loginContent.append(loginBtns);
+  var loginPasswordInput = document.createElement('INPUT');
+  loginPasswordInput.setAttribute("type", "text");
+  loginPasswordInput.id = 'login-password-input';
+  loginPasswordInput.placeholder = 'Type Password Here';
+  loginPasswordInput.className = 'login-inputs';
+  loginPasswordDiv.append(loginPasswordInput);
 
-var btnRegister = document.createElement('BUTTON');
-btnRegister.id = 'btn-register';
-btnRegister.innerHTML = 'REGISTER';
-btnRegister.className = 'btn-properties login-btns';
-loginBtns.append(btnRegister);
+  var loginBtns = document.createElement('div');
+  loginBtns.id = 'login-btns';
+  loginContent.append(loginBtns);
 
-var btnSignin = document.createElement('BUTTON');
-btnSignin.id = 'btn-signin';
-btnSignin.innerHTML = 'SIGN IN';
-btnSignin.className = 'btn-properties login-btns';
-loginBtns.append(btnSignin);
+  var btnRegister = document.createElement('BUTTON');
+  btnRegister.id = 'btn-register';
+  btnRegister.innerHTML = 'REGISTER';
+  btnRegister.className = 'btn-properties login-btns';
+  loginBtns.append(btnRegister);
+
+  var btnSignin = document.createElement('BUTTON');
+  btnSignin.id = 'btn-signin';
+  btnSignin.innerHTML = 'SIGN IN';
+  btnSignin.className = 'btn-properties login-btns';
+  loginBtns.append(btnSignin);
+
+  var email = document.getElementById('login-password-input').value;
+  var password = document.getElementById('login-email-input').value;
+
+
+  document.getElementById('btn-register').addEventListener('click', function(){
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+  });
+
+  document.getElementById('btn-signin').addEventListener('click', function(){
+    document.getElementById('login-container').className = 'hidden-container';
+    document.getElementById('page-container').className = 'active-container';
+    document.getElementById('login-container').remove();
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+  });
+}
+
+makeLoginContainer();
+
+
 
 // var loginResponse = document.createElement('div');
 //
@@ -258,14 +288,14 @@ ideasContainer.append(ideasContent);
 
 var ideasPrompt = document.createElement('div');
 ideasPrompt.id = 'ideas-prompt';
-ideasPrompt.innerHTML = 'Find Waypoint Within Distance: ';
+ideasPrompt.innerHTML = 'Find Waypoint: ';
 ideasPrompt.className = 'section-text';
 ideasHeader.append(ideasPrompt);
 
 var ideasInput = document.createElement('INPUT');
 ideasInput.setAttribute("type", "text");
 ideasInput.id = 'ideas-input';
-ideasInput.placeholder = 'How many miles away?';
+ideasInput.placeholder = 'Maximum Distance';
 ideasHeader.append(ideasInput);
 
 var ideasGoBtn = document.createElement('BUTTON');
@@ -332,3 +362,10 @@ btnSignout.id = 'btn-signout';
 btnSignout.innerHTML = 'SIGN OUT';
 btnSignout.className = 'btn-properties';
 pageContainer.append(btnSignout);
+
+btnSignout.addEventListener('click', function(){
+  document.getElementById('page-container').className = 'hidden-container';
+  makeLoginContainer();
+  document.getElementById('container').append(document.getElementById('login-container'));
+  document.getElementById('login-container').className = 'active-container';
+})

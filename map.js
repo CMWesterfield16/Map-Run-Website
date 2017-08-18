@@ -165,11 +165,11 @@ function initMap() {
       //if 2 or more markers, updates direction list and shows it
       directionsDisplay.setPanel(document.getElementById('direction-list'));
       document.getElementById('direction-list').className = 'yesdirections';
-      document.getElementById('direction-placeholder').className = 'nodirections';
+      document.getElementById('direction-placeholder').className = 'nodirections section-text';
     } else {
       //if no markers or only one marker, gets rid of direction list
       document.getElementById('direction-list').className = 'nodirections';
-      document.getElementById('direction-placeholder').className = 'yesdirections';
+      document.getElementById('direction-placeholder').className = 'yesdirections section-text';
     }
   }
 
@@ -205,14 +205,14 @@ function initMap() {
 
   var btnBacktrack = document.getElementById('btn-backtrack');
   btnBacktrack.addEventListener('click', function(){
-    if (btnBacktrack.className == 'side-btns noreturn'){
+    if (btnBacktrack.className == 'side-btns noreturn btn-properties'){
       //If backtrack was off before, turn it on and double distance travelled
-      btnBacktrack.className = 'side-btns return';
+      btnBacktrack.className = 'side-btns return btn-properties';
       totalDistance = totalDistance * 2;
       setDistance();
     } else {
       //If backtrack was on before, turn it off and go back to normal distance
-      btnBacktrack.className = 'side-btns noreturn';
+      btnBacktrack.className = 'side-btns noreturn btn-properties';
       totalDistance = totalDistance / 2;
       setDistance();
     }
@@ -230,74 +230,74 @@ function initMap() {
 
   var searchPoint = {lat: 33.980355, lng: -118.422411};
   var searchResults = [];
-  
+
   var findInput = document.getElementById('ideas-input');
   var findBtn = document.getElementById('ideas-go-btn');
   var resultsDiv = document.getElementById('ideas-container');
-  
+
   initPlaces();
 
   function initPlaces(){
     var places = new google.maps.places.PlacesService(map);
-    
+
     findBtn.addEventListener("click", function(){
       var radius = findInput.value / 0.000621371;
-      
+
       if (waypointLatLng.length > 0){
         searchPoint = waypointLatLng[waypointLatLng.length-1];
       } else searchPoint = {lat: 33.980355, lng: -118.422411};
-    
+
       places.nearbySearch({
         location: searchPoint,
         radius: radius,
         type: 'store'
       }, addResults);
-      
+
       displayTopResults();
     });
   }
-  
+
   function addResults(results, status) {
     searchResults = results;
   }
-  
+
   function displayTopResults(){
     trimResults(5);
-  
+
     for (i=0; i<searchResults.length; i++){
       display(searchResults[i]);
     }
   }
-  
+
   function trimResults(n){
     searchResults = searchResults.slice(0,n);
   }
-  
+
   function display(result){
     var name = result.name;
     var location = result.geometry.location;
     var marker;
-  
+
     var div = document.createElement('div');
     div.className = 'result-display';
     div.innerText = name;
-  
+
     div.addEventListener("mouseover", function(){
       marker = new google.maps.Marker({
         map: map,
         position: location
       });
     });
-  
+
     div.addEventListener("mouseleave", function(){
       marker.setMap(null);
     });
-  
+
     div.addEventListener("click", function(){
       waypointLatLng.push(location);
       startDrawingMap();
     });
-  
+
     resultsDiv.append(div);
   }
 
@@ -324,25 +324,25 @@ var playButton = document.getElementById('street-play');
 playButton.addEventListener("click", function(){
   if (running){
     running = false;
-    playButton.className = 'side-btns stopped';
+    playButton.className = 'side-btns stopped btn-properties';
     playButton.innerText = 'STREET';
     map = document.getElementById('map');
     map.className = 'google-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-not-active';
-    lBtn.className = 'side-btns ctrlBtns controls-not-active';
-    rBtn.className = 'side-btns ctrlBtns controls-not-active';
+    lBtn.className = 'side-btns ctrlBtns controls-not-active btn-properties';
+    rBtn.className = 'side-btns ctrlBtns controls-not-active btn-properties';
   } else {
     running = true;
-    playButton.className = 'side-btns running';
+    playButton.className = 'side-btns running btn-properties';
     playButton.innerText = 'MAP';
     map = document.getElementById('map');
     map.className = 'google-not-active';
     streetView = document.getElementById('streetView');
     streetView.className = 'google-active';
 
-    lBtn.className = 'side-btns ctrlBtns google-active';
-    rBtn.className = 'side-btns ctrlBtns google-active';
+    lBtn.className = 'side-btns ctrlBtns google-active btn-properties';
+    rBtn.className = 'side-btns ctrlBtns google-active btn-properties';
 
     if (waypointLatLng.length != 0){
       panorama = new google.maps.StreetViewPanorama(
@@ -389,4 +389,3 @@ playButton.addEventListener("click", function(){
 
 
 /******************** PLACES **********************/
-

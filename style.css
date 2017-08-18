@@ -258,9 +258,9 @@
 /* Login Page vs Main Page*/
 .hidden-container {
   display: none;
+  visibility: hidden;
 }
 
 .active-container {
   display: inherit;
 }
-
