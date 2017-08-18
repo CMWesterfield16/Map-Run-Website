@@ -3,6 +3,10 @@ var app = express();
 
 app.use(express.static(__dirname));
 
-app.listen(42168, function() {
-  console.log('listening on port 3000');
+var port = process.env.PORT;
+
+app.listen(port, function() {
+  console.log('listening on port ' + port);
 });
+
+//42168
