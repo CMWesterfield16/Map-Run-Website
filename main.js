@@ -14,7 +14,7 @@ logo.id = 'logo';
 titleBar.append(logo);
 
 var img = document.createElement("IMG");
-img.id = 'id';
+img.id = 'img';
 img.src = 'runningman.png';
 logo.appendChild(img);
 
