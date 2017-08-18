@@ -147,6 +147,43 @@ ctrlBtns.append(rBtn);
 sideBar.append(playButton);
 sideBar.append(ctrlBtns);
 
+//Waypoint Ideas setDirections
+var ideasContainer = document.createElement('div');
+ideasContainer.id = 'ideas-container';
+container.append(ideasContainer);
+
+var ideasTitle = document.createElement('div');
+ideasTitle.id = 'ideas-title';
+ideasTitle.innerHTML = 'GET WAYPOINT IDEAS'
+ideasContainer.append(ideasTitle);
+
+var ideasHeader = document.createElement('div');
+ideasHeader.id = 'ideas-header';
+ideasContainer.append(ideasHeader);
+
+var ideasContent = document.createElement('div');
+ideasContent.id = 'ideas-content';
+ideasContent.className = 'nodirections';
+ideasContainer.append(ideasContent);
+
+var ideasPrompt = document.createElement('div');
+ideasPrompt.id = 'ideas-prompt';
+ideasPrompt.innerHTML = 'Find Waypoint at Distance: ';
+ideasHeader.append(ideasPrompt);
+
+var ideasInput = document.createElement('INPUT');
+ideasInput.setAttribute("type", "text");
+ideasInput.id = 'ideas-input';
+ideasInput.placeholder = 'How many miles away?';
+ideasHeader.append(ideasInput);
+
+var ideasGoBtn = document.createElement('BUTTON');
+ideasGoBtn.id = 'ideas-go-btn';
+ideasGoBtn.innerHTML = 'FIND';
+ideasHeader.append(ideasGoBtn);
+
+
+
 // Directions List
 
 var directionContent = document.createElement('div');
@@ -156,7 +193,7 @@ container.append(directionContent);
 
 var directionTitle = document.createElement('div');
 directionTitle.id = 'directionTitle';
-directionTitle.innerHTML = 'Directions';
+directionTitle.innerHTML = 'DIRECTIONS';
 directionContent.append(directionTitle);
 
 var directionList = document.createElement('div');
