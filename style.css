@@ -198,6 +198,7 @@
   color: black;
   font-family: 'Just Another Hand';
   font-size: 1.5em;
+  margin-left: 5px;
 }
 
 #ideas-go-btn {
@@ -207,4 +208,5 @@
   font-family: 'Just Another Hand';
   border-style: none;
   margin-left: 5px;
+  margin-right: 5px;
 }
