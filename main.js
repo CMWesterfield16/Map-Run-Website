@@ -33,7 +33,7 @@ container.append(mainContent);
 /*                  MAP                   */
 var imageHolder = document.createElement('div');
 imageHolder.id = 'image-holder';
-mainContent.append(imageHolder);
+
 
 var map = document.createElement('div');
 map.id = 'map';
@@ -48,6 +48,8 @@ imageHolder.append(streetView);
 var sideBar = document.createElement('div');
 sideBar.id = 'side-bar';
 mainContent.append(sideBar);
+
+mainContent.append(imageHolder);
 
 
 /*               SIDEBAR                */
@@ -150,7 +152,7 @@ sideBar.append(ctrlBtns);
 //Waypoint Ideas setDirections
 var ideasContainer = document.createElement('div');
 ideasContainer.id = 'ideas-container';
-container.append(ideasContainer);
+mainContent.append(ideasContainer);
 
 var ideasTitle = document.createElement('div');
 ideasTitle.id = 'ideas-title';
