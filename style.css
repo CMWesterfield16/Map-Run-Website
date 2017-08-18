@@ -151,3 +151,13 @@
 .google-not-active {
   display: none;
 }
+
+/* Control buttons for street view navigation */
+#controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.ctrlBtns {
+  width: 40px;
+}
