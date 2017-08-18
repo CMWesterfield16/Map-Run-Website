@@ -18,17 +18,98 @@ img.id = 'img';
 img.src = 'runningman.png';
 logo.appendChild(img);
 
-// var img = new Image();
+//Creates Login vs Page Containers and set Login as active
+
+var loginContainer = document.createElement('div');
+var pageContainer = document.createElement('div');
+
+loginContainer.id = 'login-container';
+pageContainer.id = 'page-container';
+
+loginContainer.className = 'active-container';
+pageContainer.className = 'hidden-container';
+
+container.append(loginContainer);
+container.append(pageContainer);
+
+/*************** LOGIN CONTENT *****************/
+
+var loginContent = document.createElement('div');
+loginContent.id = 'login-content';
+loginContent.className = 'container-formatting';
+loginContainer.append(loginContent);
+
+var loginTitle = document.createElement('div');
+loginTitle.id = 'login-title';
+loginTitle.className = 'section-title';
+loginTitle.innerHTML = 'LOGIN';
+loginContent.append(loginTitle);
+
+var loginEmailDiv = document.createElement('div');
+loginEmailDiv.id = 'login-email-div';
+loginEmailDiv.className = 'login-divs';
+loginContent.append(loginEmailDiv);
+
+var loginEmailText = document.createElement('div');
+loginEmailText.id = 'login-email-text';
+loginEmailText.className = 'section-text';
+loginEmailText.innerHTML = 'EMAIL:';
+loginEmailDiv.append(loginEmailText);
+
+var loginEmailInput = document.createElement('INPUT');
+loginEmailInput.setAttribute("type", "text");
+loginEmailInput.id = 'login-email-input';
+loginEmailInput.placeholder = 'Type Email Here';
+loginEmailInput.className = 'login-inputs';
+loginEmailDiv.append(loginEmailInput);
+
+var loginPasswordDiv = document.createElement('div');
+loginPasswordDiv.id = 'login-password-div';
+loginPasswordDiv.className = 'login-divs';
+loginContent.append(loginPasswordDiv);
+
+var loginPasswordText = document.createElement('div');
+loginPasswordText.id = 'login-password-text';
+loginPasswordText.className = 'section-text';
+loginPasswordText.innerHTML = 'PASSWORD:';
+loginPasswordDiv.append(loginPasswordText);
+
+var loginPasswordInput = document.createElement('INPUT');
+loginPasswordInput.setAttribute("type", "text");
+loginPasswordInput.id = 'login-password-input';
+loginPasswordInput.placeholder = 'Type Password Here';
+loginPasswordInput.className = 'login-inputs';
+loginPasswordDiv.append(loginPasswordInput);
+
+var loginBtns = document.createElement('div');
+loginBtns.id = 'login-btns';
+loginContent.append(loginBtns);
+
+var btnRegister = document.createElement('BUTTON');
+btnRegister.id = 'btn-register';
+btnRegister.innerHTML = 'REGISTER';
+btnRegister.className = 'btn-properties login-btns';
+loginBtns.append(btnRegister);
+
+var btnSignin = document.createElement('BUTTON');
+btnSignin.id = 'btn-signin';
+btnSignin.innerHTML = 'SIGN IN';
+btnSignin.className = 'btn-properties login-btns';
+loginBtns.append(btnSignin);
+
+// var loginResponse = document.createElement('div');
 //
-// img.onload = function() {
-//   logo.append(img);
-// };
+//
+//
+//
+//
+//
 
 
 /*************** MAIN CONTENT *****************/
 var mainContent = document.createElement('div');
 mainContent.id = 'main-content';
-container.append(mainContent);
+pageContainer.append(mainContent);
 
 /*                  MAP                   */
 var imageHolder = document.createElement('div');
@@ -101,6 +182,7 @@ var btnReturn = document.createElement('BUTTON');
 var btnBacktrack = document.createElement('BUTTON');
 var btnUndo = document.createElement('BUTTON');
 var btnClear = document.createElement('BUTTON');
+// var btnSave = document.
 
 btnBacktrack.id = 'btn-backtrack';
 btnReturn.id = 'btn-return';
@@ -194,7 +276,7 @@ ideasHeader.append(ideasGoBtn);
 
 var bottomContainer = document.createElement('div');
 bottomContainer.id = 'bottom-container';
-container.append(bottomContainer);
+pageContainer.append(bottomContainer);
 
 //Saved maps
 
@@ -238,3 +320,11 @@ var directionList = document.createElement('div');
 directionList.id = 'direction-list';
 directionList.className = 'nodirections';
 directionContent.append(directionList);
+
+//Sign Out Button
+
+var btnSignout = document.createElement('BUTTON');
+btnSignout.id = 'btn-signout';
+btnSignout.innerHTML = 'SIGN OUT';
+btnSignout.className = 'btn-properties';
+pageContainer.append(btnSignout);

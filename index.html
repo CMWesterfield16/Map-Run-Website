@@ -17,8 +17,22 @@
   </head>
   <body>
     <div id="container"></div>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBkDCJlUVsIMpDpBLMIFNpR9-WRg6AjQJg",
+        authDomain: "run-a-way.firebaseapp.com",
+        databaseURL: "https://run-a-way.firebaseio.com",
+        projectId: "run-a-way",
+        storageBucket: "run-a-way.appspot.com",
+        messagingSenderId: "453339831105"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src='main.js'></script>
+    <script src='signin.js'></script>
     <script src='map.js'></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsUNBQs9p7NIKwvKo1eFn8SNa7h4FQwro&callback=initMain">
