@@ -41,6 +41,7 @@
   margin: 5px;
   padding: 10px;
   border: 2px solid black;
+  display: table;
 }
 
 /*Distance counter formatting*/
@@ -53,11 +54,14 @@
 }
 
 /*Side buttons formatting*/
+
 .side-btns {
   color: black;
-  background-color: gray;
   font-size: 1.5em;
-  margin: 10px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-style: none;
   width: 100px;
   display: block;
@@ -68,19 +72,32 @@
 }
 
 /*Make title look like a title and not a button*/
-#title-sideBar {
+/*#sideBarTitle {
+  color: black;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-style: none;
+  width: 100px;
+  display: block;
   background: none;
-}
+  font-size: 2em;
+  font-family: 'Just Another Hand', cursive;
+}*/
 
 .title-elements {
   color: black;
   font-size: 2em;
   font-family: 'Just Another Hand', cursive;
-  margin: 10px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-style: none;
-  background: none;
   width: 100px;
   display: block;
+  background: none;
 }
 
 #data-speed {
@@ -147,7 +164,6 @@
 
 
 /*Switch between google map and google street view*/
-
 .google-not-active {
   display: none;
 }
