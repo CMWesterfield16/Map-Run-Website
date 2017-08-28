@@ -233,7 +233,7 @@ function initMap() {
 
   var findInput = document.getElementById('ideas-input');
   var findBtn = document.getElementById('ideas-go-btn');
-  var resultsDiv = document.getElementById('ideas-container');
+  var resultsDiv = document.getElementById('ideas-output');
 
   initPlaces();
 
@@ -241,6 +241,7 @@ function initMap() {
     var places = new google.maps.places.PlacesService(map);
 
     findBtn.addEventListener("click", function(){
+      $(resultsDiv).empty();
       var radius = findInput.value / 0.000621371;
 
       if (waypointLatLng.length > 0){
