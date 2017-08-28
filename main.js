@@ -304,6 +304,10 @@ ideasGoBtn.className = 'btn-properties';
 ideasGoBtn.innerHTML = 'FIND';
 ideasHeader.append(ideasGoBtn);
 
+var ideasOutput = document.createElement('div');
+ideasOutput.id = 'ideas-output';
+ideasContent.append(ideasOutput);
+
 
 
 // Bottom Content
