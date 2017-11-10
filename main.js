@@ -96,44 +96,51 @@ function makeLoginContainer() {
   btnSignin.className = 'btn-properties login-btns';
   loginBtns.append(btnSignin);
 
-  var email = document.getElementById('login-password-input').value;
-  var password = document.getElementById('login-email-input').value;
+  var loginMessage = document.createElement('div');
+  loginMessage.id = 'login-message';
+  loginMessage.innerHTML = '';
+  loginMessage.className = 'section-text';
+  loginContent.append(loginMessage);
+
+  var email = loginEmailInput.value;
+  var password = loginPasswordInput.value;
 
 
   document.getElementById('btn-register').addEventListener('click', function(){
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
+    if ((!isNaN(email)) && (!isNaN(password))) {
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+    } else {
+      loginMessage.innerHTML = 'You need an email and a password!';
+    }
   });
 
   document.getElementById('btn-signin').addEventListener('click', function(){
-    document.getElementById('login-container').className = 'hidden-container';
-    document.getElementById('page-container').className = 'active-container';
-    document.getElementById('login-container').remove();
+    console.log(loginEmailInput.value);
+    console.log(loginPasswordInput.value);
+    if ((!isNaN(email)) && (!isNaN(password))) {
+      document.getElementById('login-container').className = 'hidden-container';
+      document.getElementById('page-container').className = 'active-container';
+      document.getElementById('login-container').remove();
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+    } else {
+      loginMessage.innerHTML = 'You need an email and a password!';
+    }
+
   });
 }
 
 makeLoginContainer();
-
-
-
-// var loginResponse = document.createElement('div');
-//
-//
-//
-//
-//
-//
 
 
 /*************** MAIN CONTENT *****************/
